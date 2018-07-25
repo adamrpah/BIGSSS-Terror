@@ -1,10 +1,34 @@
+extensions [ csv ]
 
+breed [ groups group ]
+groups-own [
+  name
+  mu
+]
+
+to setup
+  clear-all
+  let path (word "inputs/" input-folder "/")
+  let params csv:from-file (word path "params.csv")
+  set alpha item 0 item 1 params
+  set beta  item 1 item 1 params
+
+  let group-list csv:from-file (word path "groups.csv")
+  print but-first group-list
+
+  reset-ticks
+end
+
+
+
+to go
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
-10
-647
-448
+490
+49
+927
+487
 -1
 -1
 13.0
@@ -26,6 +50,72 @@ GRAPHICS-WINDOW
 1
 ticks
 30.0
+
+CHOOSER
+45
+197
+256
+243
+input-folder
+input-folder
+"dummy" "columbia"
+0
+
+BUTTON
+42
+40
+116
+74
+NIL
+setup
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+124
+41
+188
+75
+NIL
+go
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+INPUTBOX
+43
+114
+150
+174
+alpha
+0.5
+1
+0
+Number
+
+INPUTBOX
+155
+114
+257
+174
+beta
+0.5
+1
+0
+Number
 
 @#$#@#$#@
 ## WHAT IS IT?
