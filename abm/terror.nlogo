@@ -62,8 +62,8 @@ end
 GRAPHICS-WINDOW
 285
 6
-598
-319
+816
+538
 -1
 -1
 15.85
@@ -90,7 +90,7 @@ CHOOSER
 45
 197
 256
-243
+242
 input-folder
 input-folder
 "dummy" "columbia"
