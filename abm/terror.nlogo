@@ -1,20 +1,42 @@
-extensions [ csv ]
+extensions [ table csv ]
 
 breed [ groups group ]
 groups-own [
   name
   mu
+  attacks
+  sigma
 ]
 
 to setup
   clear-all
   let path (word "inputs/" input-folder "/")
+
+  ; Intialise the global parameters
   let params csv:from-file (word path "params.csv")
   set alpha item 0 item 1 params
   set beta  item 1 item 1 params
 
+  ; Initialise the groups
   let group-list csv:from-file (word path "groups.csv")
-  print but-first group-list
+  foreach but-first group-list [ row ->
+    create-groups 1 [
+      set name    item 0 row
+      set mu      read-from-string item 1 row
+      set attacks []
+      set label name
+      move-to one-of patches
+    ]
+  ]
+
+  ; Create the links between the groups
+  let link-list csv:from-file (word path "network.csv")
+  let group-table table:from-list [ (list name self) ] of groups
+  foreach but-first link-list [ row ->
+    let source-group table:get group-table (item 0 row)
+    let target-group table:get group-table (item 1 row)
+    ask source-group [ create-link-with target-group ]
+  ]
 
   reset-ticks
 end
@@ -25,21 +47,21 @@ to go
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-490
-49
-927
-487
+285
+6
+598
+319
 -1
 -1
-13.0
+15.85
 1
 10
 1
 1
 1
 0
-1
-1
+0
+0
 1
 -16
 16
@@ -101,7 +123,7 @@ INPUTBOX
 150
 174
 alpha
-0.5
+1.0
 1
 0
 Number
@@ -112,7 +134,7 @@ INPUTBOX
 257
 174
 beta
-0.5
+10.0
 1
 0
 Number
