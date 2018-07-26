@@ -5,7 +5,7 @@ groups-own [
   name
   mu
   attacks
-  sigma
+  lambda
 ]
 
 to setup
@@ -24,7 +24,7 @@ to setup
       set name    item 0 row
       set mu      read-from-string item 1 row
       set attacks []
-      set sigma 1 ; TODO: remove this! *******************
+      set lambda 1 ; TODO: remove this! *******************
       set label name
       move-to one-of patches
     ]
@@ -44,18 +44,18 @@ end
 
 to go
   ask groups [
-    update-sigma
+    update-lambda
     generate-attacks
   ]
   tick
 end
 
-to update-sigma ; group command
+to update-lambda ; group command
 
 end
 
 to generate-attacks ; group command
-  let n random-poisson sigma
+  let n random-poisson lambda
   set attacks sentence attacks (n-values n [ ticks ])
 end
 @#$#@#$#@
