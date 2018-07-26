@@ -51,7 +51,14 @@ to go
 end
 
 to update-lambda ; group command
+  let attacks-of-neighbors reduce sentence ([ attacks ] of link-neighbors)
+  set lambda lambda-star mu (sentence attacks attacks-of-neighbors) ticks
+end
 
+to-report lambda-star [ mu-t ts t ]
+  report mu-t + sum map [ ti ->
+    alpha * exp (- beta * (t - ti))
+  ] ts
 end
 
 to generate-attacks ; group command
@@ -62,8 +69,8 @@ end
 GRAPHICS-WINDOW
 285
 6
-598
-319
+816
+538
 -1
 -1
 15.85
@@ -90,7 +97,7 @@ CHOOSER
 45
 197
 256
-243
+242
 input-folder
 input-folder
 "dummy" "columbia"
@@ -151,6 +158,23 @@ beta
 1
 0
 Number
+
+PLOT
+835
+79
+1431
+484
+Lambdas
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+true
+"ask groups [\n  create-temporary-plot-pen name\n  set-plot-pen-color color\n]" "ask groups [\n  set-current-plot-pen name\n  plot lambda\n]"
+PENS
 
 @#$#@#$#@
 ## WHAT IS IT?
