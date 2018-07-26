@@ -159,6 +159,23 @@ beta
 0
 Number
 
+PLOT
+835
+79
+1431
+484
+Lambdas
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+true
+"ask groups [\n  create-temporary-plot-pen name\n  set-plot-pen-color color\n]" "ask groups [\n  set-current-plot-pen name\n  plot lambda\n]"
+PENS
+
 @#$#@#$#@
 ## WHAT IS IT?
 
