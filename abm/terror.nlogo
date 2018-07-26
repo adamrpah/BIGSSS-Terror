@@ -24,6 +24,7 @@ to setup
       set name    item 0 row
       set mu      read-from-string item 1 row
       set attacks []
+      set sigma 1 ; TODO: remove this! *******************
       set label name
       move-to one-of patches
     ]
@@ -41,9 +42,21 @@ to setup
   reset-ticks
 end
 
-
-
 to go
+  ask groups [
+    update-sigma
+    generate-attacks
+  ]
+  tick
+end
+
+to update-sigma ; group command
+
+end
+
+to generate-attacks ; group command
+  let n random-poisson sigma
+  set attacks sentence attacks (n-values n [ ticks ])
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
