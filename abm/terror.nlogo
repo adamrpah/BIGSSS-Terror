@@ -51,7 +51,14 @@ to go
 end
 
 to update-lambda ; group command
+  let attacks-of-neighbors reduce sentence ([ attacks ] of link-neighbors)
+  set lambda lambda-star mu (sentence attacks attacks-of-neighbors) ticks
+end
 
+to-report lambda-star [ mu-t ts t ]
+  report mu-t + sum map [ ti ->
+    alpha * exp (- beta * (t - ti))
+  ] ts
 end
 
 to generate-attacks ; group command
