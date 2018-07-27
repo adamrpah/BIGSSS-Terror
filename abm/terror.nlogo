@@ -56,14 +56,22 @@ to go
 end
 
 to update-lambda ; group command
-  let attacks-of-neighbors reduce sentence ([ attacks ] of link-neighbors)
-  set lambda lambda-star mu (sentence attacks attacks-of-neighbors) ticks
+  let lists-of-wt-pairs [
+    wt-pairs weight ([ attacks ] of other-end)
+  ] of my-links
+  let attacks-of-neighbors reduce sentence lists-of-wt-pairs
+  let my-attacks wt-pairs 1 attacks
+  set lambda lambda-star mu (sentence my-attacks attacks-of-neighbors) ticks
 end
 
-to-report lambda-star [ mu-t ts t ]
-  report mu-t + sum map [ ti ->
-    alpha * exp (- beta * (t - ti))
-  ] ts
+to-report wt-pairs [ w ts ] ; link reporter
+  report map [ t -> (list w t) ] ts
+end
+
+to-report lambda-star [ the-mu the-wt-pairs t ]
+  report the-mu + sum map [ wt ->
+    (item 0 wt) * alpha * exp (- beta * (t - (item 1 wt)))
+  ] the-wt-pairs
 end
 
 to generate-attacks ; group command
