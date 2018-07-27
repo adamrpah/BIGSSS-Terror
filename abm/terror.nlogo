@@ -80,7 +80,8 @@ to generate-attacks ; group command
 end
 
 to write-results
-  let filename (word "outputs/" output-folder "/"
+  let country input-folder ; we use the name of the input folder as the country name
+  let filename (word "outputs/" output-folder "/" country "_"
     alpha "_" beta "_" omega "_" behaviorspace-run-number ".csv")
   csv:to-file filename reduce sentence [
     map [ pair -> fput name pair ] table:to-list table:counts attacks
