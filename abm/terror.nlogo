@@ -12,11 +12,6 @@ to setup
   clear-all
   let path (word "inputs/" input-folder "/")
 
-  ; Intialise the global parameters
-  let params csv:from-file (word path "params.csv")
-  set alpha item 0 item 1 params
-  set beta  item 1 item 1 params
-
   ; Initialise the groups
   let group-list csv:from-file (word path "groups.csv")
   foreach but-first group-list [ row ->
@@ -94,20 +89,20 @@ ticks
 30.0
 
 CHOOSER
-45
-197
-256
-242
+25
+215
+245
+260
 input-folder
 input-folder
 "dummy" "columbia"
 0
 
 BUTTON
-42
-40
-116
-74
+25
+30
+99
+64
 NIL
 setup
 NIL
@@ -121,10 +116,10 @@ NIL
 1
 
 BUTTON
-124
-41
-188
-75
+110
+30
+174
+64
 NIL
 go
 NIL
@@ -136,28 +131,6 @@ NIL
 NIL
 NIL
 1
-
-INPUTBOX
-43
-114
-150
-174
-alpha
-1.0
-1
-0
-Number
-
-INPUTBOX
-155
-114
-257
-174
-beta
-10.0
-1
-0
-Number
 
 PLOT
 835
@@ -175,6 +148,51 @@ true
 true
 "ask groups [\n  create-temporary-plot-pen name\n  set-plot-pen-color color\n]" "ask groups [\n  set-current-plot-pen name\n  plot lambda\n]"
 PENS
+
+SLIDER
+25
+90
+245
+123
+alpha
+alpha
+0
+5
+1.0
+0.05
+1
+NIL
+HORIZONTAL
+
+SLIDER
+25
+130
+245
+163
+beta
+beta
+0
+50
+10.0
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+25
+170
+245
+203
+omega
+omega
+0
+1
+0.5
+0.05
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -535,5 +553,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@
