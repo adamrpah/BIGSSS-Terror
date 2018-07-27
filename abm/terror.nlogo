@@ -121,10 +121,8 @@ CHOOSER
 260
 input-folder
 input-folder
-"dummy" "columbia"
-0
 "Afghanistan" "Colombia" "Iraq" "dummy"
-1
+0
 
 BUTTON
 25
@@ -161,10 +159,10 @@ NIL
 0
 
 PLOT
-835
-79
-1431
-484
+820
+8
+1417
+539
 Lambdas
 NIL
 NIL
@@ -201,7 +199,7 @@ beta
 beta
 0
 50
-4.0
+8.5
 0.1
 1
 NIL
@@ -216,7 +214,7 @@ omega
 omega
 0
 1
-0.0
+0.5
 0.05
 1
 NIL
