@@ -78,6 +78,14 @@ to generate-attacks ; group command
   let n random-poisson lambda
   set attacks sentence attacks (n-values n [ ticks ])
 end
+
+to write-results
+  let filename (word "outputs/" output-folder "/"
+    alpha "_" beta "_" omega "_" behaviorspace-run-number ".csv")
+  csv:to-file filename reduce sentence [
+    map [ pair -> fput name pair ] table:to-list table:counts attacks
+  ] of groups
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 285
@@ -148,7 +156,7 @@ NIL
 NIL
 NIL
 NIL
-1
+0
 
 PLOT
 835
@@ -176,7 +184,7 @@ alpha
 alpha
 0
 5
-1.0
+1.2
 0.05
 1
 NIL
@@ -191,7 +199,7 @@ beta
 beta
 0
 50
-10.0
+4.0
 0.1
 1
 NIL
@@ -206,11 +214,39 @@ omega
 omega
 0
 1
-0.5
+0.0
 0.05
 1
 NIL
 HORIZONTAL
+
+INPUTBOX
+25
+265
+245
+325
+output-folder
+20180727A
+1
+0
+String
+
+BUTTON
+180
+30
+243
+63
+NIL
+go
+T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -558,6 +594,27 @@ NetLogo 6.0.4
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
+<experiments>
+  <experiment name="experiment" repetitions="1" sequentialRunOrder="false" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <final>write-results</final>
+    <timeLimit steps="1461"/>
+    <enumeratedValueSet variable="input-folder">
+      <value value="&quot;dummy&quot;"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.5"/>
+    <steppedValueSet variable="beta" first="4" step="0.5" last="10"/>
+    <enumeratedValueSet variable="output-folder">
+      <value value="&quot;20180727A&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="omega">
+      <value value="0"/>
+      <value value="0.1"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+  </experiment>
+</experiments>
 @#$#@#$#@
 @#$#@#$#@
 default
