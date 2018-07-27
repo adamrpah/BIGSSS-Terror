@@ -47,6 +47,7 @@ to setup
 end
 
 to go
+  if too-many-attacks? [ stop ]
   ask groups [
     update-lambda
     generate-attacks
@@ -86,6 +87,12 @@ to write-results
     map [ pair -> fput name pair ] table:to-list table:counts attacks
   ] of groups
 end
+
+to-report too-many-attacks?
+  report reduce or [
+    not empty? filter [ n -> n > stopping-threshold ] table:values table:counts attacks
+  ] of groups
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 285
@@ -122,7 +129,7 @@ CHOOSER
 input-folder
 input-folder
 "Afghanistan" "Colombia" "Iraq" "dummy"
-0
+2
 
 BUTTON
 25
@@ -184,7 +191,7 @@ alpha
 alpha
 0
 5
-1.2
+1.0
 0.05
 1
 NIL
@@ -199,7 +206,7 @@ beta
 beta
 0
 50
-8.5
+3.0
 0.1
 1
 NIL
@@ -214,7 +221,7 @@ omega
 omega
 0
 1
-0.5
+0.0
 0.05
 1
 NIL
@@ -247,6 +254,21 @@ NIL
 NIL
 NIL
 0
+
+SLIDER
+25
+335
+245
+369
+stopping-threshold
+stopping-threshold
+1
+100
+25.0
+1
+1
+attacks
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -595,16 +617,19 @@ NetLogo 6.0.4
 @#$#@#$#@
 @#$#@#$#@
 <experiments>
-  <experiment name="experiment" repetitions="1" sequentialRunOrder="false" runMetricsEveryStep="false">
+  <experiment name="experiment" repetitions="1000" sequentialRunOrder="false" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
     <final>write-results</final>
-    <timeLimit steps="1461"/>
+    <timeLimit steps="1826"/>
+    <exitCondition>too-many-attacks?</exitCondition>
     <enumeratedValueSet variable="input-folder">
-      <value value="&quot;dummy&quot;"/>
+      <value value="&quot;Afghanistan&quot;"/>
+      <value value="&quot;Colombia&quot;"/>
+      <value value="&quot;Iraq&quot;"/>
     </enumeratedValueSet>
     <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.5"/>
-    <steppedValueSet variable="beta" first="4" step="0.5" last="10"/>
+    <steppedValueSet variable="beta" first="2.5" step="0.5" last="10"/>
     <enumeratedValueSet variable="output-folder">
       <value value="&quot;20180727A&quot;"/>
     </enumeratedValueSet>
