@@ -8,14 +8,13 @@ groups-own [
   lambda
 ]
 
+links-own [
+  weight
+]
+
 to setup
   clear-all
   let path (word "inputs/" input-folder "/")
-
-  ; Intialise the global parameters
-  let params csv:from-file (word path "params.csv")
-  set alpha item 0 item 1 params
-  set beta  item 1 item 1 params
 
   ; Initialise the groups
   let group-list csv:from-file (word path "groups.csv")
@@ -24,9 +23,11 @@ to setup
       set name    item 0 row
       set mu      read-from-string item 1 row
       set attacks []
-      set lambda 1 ; TODO: remove this! *******************
       set label name
       move-to one-of patches
+      create-links-with other groups [
+        set weight omega
+      ]
     ]
   ]
 
@@ -36,7 +37,11 @@ to setup
   foreach but-first link-list [ row ->
     let source-group table:get group-table (item 0 row)
     let target-group table:get group-table (item 1 row)
-    ask source-group [ create-link-with target-group ]
+    ask source-group [
+      ask link-with target-group [
+        set weight 1
+      ]
+    ]
   ]
 
   reset-ticks
@@ -51,14 +56,22 @@ to go
 end
 
 to update-lambda ; group command
-  let attacks-of-neighbors reduce sentence ([ attacks ] of link-neighbors)
-  set lambda lambda-star mu (sentence attacks attacks-of-neighbors) ticks
+  let lists-of-wt-pairs [
+    wt-pairs weight ([ attacks ] of other-end)
+  ] of my-links
+  let attacks-of-neighbors reduce sentence lists-of-wt-pairs
+  let my-attacks wt-pairs 1 attacks
+  set lambda lambda-star mu (sentence my-attacks attacks-of-neighbors) ticks
 end
 
-to-report lambda-star [ mu-t ts t ]
-  report mu-t + sum map [ ti ->
-    alpha * exp (- beta * (t - ti))
-  ] ts
+to-report wt-pairs [ w ts ] ; link reporter
+  report map [ t -> (list w t) ] ts
+end
+
+to-report lambda-star [ the-mu the-wt-pairs t ]
+  report the-mu + sum map [ wt ->
+    (item 0 wt) * alpha * exp (- beta * (t - (item 1 wt)))
+  ] the-wt-pairs
 end
 
 to generate-attacks ; group command
@@ -94,20 +107,20 @@ ticks
 30.0
 
 CHOOSER
-45
-197
-256
-242
+25
+215
+245
+260
 input-folder
 input-folder
 "dummy" "columbia"
 0
 
 BUTTON
-42
-40
-116
-74
+25
+30
+99
+64
 NIL
 setup
 NIL
@@ -121,10 +134,10 @@ NIL
 1
 
 BUTTON
-124
-41
-188
-75
+110
+30
+174
+64
 NIL
 go
 NIL
@@ -136,28 +149,6 @@ NIL
 NIL
 NIL
 1
-
-INPUTBOX
-43
-114
-150
-174
-alpha
-1.0
-1
-0
-Number
-
-INPUTBOX
-155
-114
-257
-174
-beta
-10.0
-1
-0
-Number
 
 PLOT
 835
@@ -175,6 +166,51 @@ true
 true
 "ask groups [\n  create-temporary-plot-pen name\n  set-plot-pen-color color\n]" "ask groups [\n  set-current-plot-pen name\n  plot lambda\n]"
 PENS
+
+SLIDER
+25
+90
+245
+123
+alpha
+alpha
+0
+5
+1.0
+0.05
+1
+NIL
+HORIZONTAL
+
+SLIDER
+25
+130
+245
+163
+beta
+beta
+0
+50
+10.0
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+25
+170
+245
+203
+omega
+omega
+0
+1
+0.5
+0.05
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -535,5 +571,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@
