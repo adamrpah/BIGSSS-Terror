@@ -24,7 +24,6 @@ to setup
       set mu      item 1 row
       set attacks []
       set label name
-      move-to one-of patches
       create-links-with other groups [
         set weight omega
       ]
@@ -43,7 +42,7 @@ to setup
       ]
     ]
   ]
-
+  layout-circle turtles 8
   reset-ticks
 end
 
