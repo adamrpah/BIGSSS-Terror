@@ -124,6 +124,8 @@ input-folder
 input-folder
 "dummy" "columbia"
 0
+"Afghanistan" "Colombia" "Iraq" "dummy"
+1
 
 BUTTON
 25
