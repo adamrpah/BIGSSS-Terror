@@ -21,7 +21,7 @@ to setup
   foreach but-first group-list [ row ->
     create-groups 1 [
       set name    item 0 row
-      set mu      read-from-string item 1 row
+      set mu      item 1 row
       set attacks []
       set label name
       move-to one-of patches
