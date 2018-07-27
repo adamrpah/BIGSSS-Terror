@@ -19,7 +19,6 @@ to setup
       set name    item 0 row
       set mu      read-from-string item 1 row
       set attacks []
-      set lambda 1 ; TODO: remove this! *******************
       set label name
       move-to one-of patches
     ]
