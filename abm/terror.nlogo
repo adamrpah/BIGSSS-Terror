@@ -8,6 +8,10 @@ groups-own [
   lambda
 ]
 
+links-own [
+  weight
+]
+
 to setup
   clear-all
   let path (word "inputs/" input-folder "/")
@@ -21,6 +25,9 @@ to setup
       set attacks []
       set label name
       move-to one-of patches
+      create-links-with other groups [
+        set weight omega
+      ]
     ]
   ]
 
@@ -30,7 +37,11 @@ to setup
   foreach but-first link-list [ row ->
     let source-group table:get group-table (item 0 row)
     let target-group table:get group-table (item 1 row)
-    ask source-group [ create-link-with target-group ]
+    ask source-group [
+      ask link-with target-group [
+        set weight 1
+      ]
+    ]
   ]
 
   reset-ticks
