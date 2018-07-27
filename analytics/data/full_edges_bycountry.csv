@@ -1,0 +1,32 @@
+Source,Target,Type,Id,Label,timeset,Weight
+Revolutionary Armed Forces of Colombia (FARC),Group of Popular Combatants (GPC),Directed,0,,,1
+Revolutionary Armed Forces of Colombia (FARC),Jaime Bateman Cayon Group (JBC),Directed,2,,,1
+Revolutionary Armed Forces of Colombia (FARC),Latin American Patriotic Army (EPLA),Directed,3,,,1
+Revolutionary Armed Forces of Colombia (FARC),National Liberation Army (Colombia),Directed,4,,,1
+Revolutionary Armed Forces of Colombia (FARC),Self-Defense Groups of Cordoba and Uraba (ACCU),Directed,5,,,1
+Revolutionary Armed Forces of Colombia (FARC),United Self-Defense Forces of Colombia (AUC),Directed,6,,,1
+Revolutionary Armed Forces of Colombia (FARC),Bolivarian Liberation Forces (FBL),Directed,7,,,1
+Revolutionary Armed Forces of Colombia (FARC),EPA (Ejercito del Pueblo en Armas),Directed,8,,,1
+Group of Popular Combatants (GPC),National Liberation Army (Colombia),Directed,9,,,1
+National Liberation Army (Colombia),United Self-Defense Forces of Colombia (AUC),Directed,10,,,1
+National Liberation Army (Colombia),Bolivarian Liberation Forces (FBL),Directed,11,,,1
+National Liberation Army (Colombia),Popular Liberation Army,Directed,12,,,1
+Self-Defense Groups of Cordoba and Uraba (ACCU),United Self-Defense Forces of Colombia (AUC),Directed,13,,,1
+Bolivarian Liberation Forces (FBL),EPA (Ejercito del Pueblo en Armas),Directed,14,,,1
+Taliban,al-Qaeda,Directed,22,,,1
+Taliban,Islamic Movement of Uzbekistan (IMU),Directed,23,,,1
+Taliban,Jaish-ul-Muslimin,Directed,24,,,1
+Taliban,Mujahideen Message,Directed,25,,,1
+al-Qaeda,Islamic Movement of Uzbekistan (IMU),Directed,27,,,1
+al-Qaeda,Ansar al-Islam,Directed,29,,,1
+al-Qaeda,Ansar al-Sunnah Army,Directed,30,,,1
+al-Qaeda,Tawhid and Jihad,Directed,31,,,1
+al-Qaeda,al-Qaeda Organization in the Land of the Two Rivers,Directed,32,,,1
+Ansar al-Islam,Ansar al-Sunnah Army,Directed,33,,,1
+Ansar al-Islam,Tawhid and Jihad,Directed,34,,,1
+Ansar al-Islam,al-Qaeda Organization in the Land of the Two Rivers,Directed,35,,,1
+Ansar al-Sunnah,Army al-Qaeda Organization in the Land of the Two Rivers,Directed,36,,,1
+Tawhid and Jihad,al-Qaeda Organization in the Land of the Two Rivers,Directed,37,,,1
+al-Qaeda Organization in the Land of the Two Rivers,Mujahedin Shura Council,Directed,38,,,1
+Mahdi Army,Abu al-Abbas,Directed,39,,,1
+Islamic Jihad Brigades,Mujahedin Shura Council,Directed,40,,,1
