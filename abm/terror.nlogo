@@ -1,21 +1,87 @@
+extensions [ table csv ]
 
+breed [ groups group ]
+groups-own [
+  name
+  mu
+  attacks
+  lambda
+]
+
+to setup
+  clear-all
+  let path (word "inputs/" input-folder "/")
+
+  ; Intialise the global parameters
+  let params csv:from-file (word path "params.csv")
+  set alpha item 0 item 1 params
+  set beta  item 1 item 1 params
+
+  ; Initialise the groups
+  let group-list csv:from-file (word path "groups.csv")
+  foreach but-first group-list [ row ->
+    create-groups 1 [
+      set name    item 0 row
+      set mu      read-from-string item 1 row
+      set attacks []
+      set lambda 1 ; TODO: remove this! *******************
+      set label name
+      move-to one-of patches
+    ]
+  ]
+
+  ; Create the links between the groups
+  let link-list csv:from-file (word path "network.csv")
+  let group-table table:from-list [ (list name self) ] of groups
+  foreach but-first link-list [ row ->
+    let source-group table:get group-table (item 0 row)
+    let target-group table:get group-table (item 1 row)
+    ask source-group [ create-link-with target-group ]
+  ]
+
+  reset-ticks
+end
+
+to go
+  ask groups [
+    update-lambda
+    generate-attacks
+  ]
+  tick
+end
+
+to update-lambda ; group command
+  let attacks-of-neighbors reduce sentence ([ attacks ] of link-neighbors)
+  set lambda lambda-star mu (sentence attacks attacks-of-neighbors) ticks
+end
+
+to-report lambda-star [ mu-t ts t ]
+  report mu-t + sum map [ ti ->
+    alpha * exp (- beta * (t - ti))
+  ] ts
+end
+
+to generate-attacks ; group command
+  let n random-poisson lambda
+  set attacks sentence attacks (n-values n [ ticks ])
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
-10
-647
-448
+285
+6
+816
+538
 -1
 -1
-13.0
+15.85
 1
 10
 1
 1
 1
 0
-1
-1
+0
+0
 1
 -16
 16
@@ -26,6 +92,89 @@ GRAPHICS-WINDOW
 1
 ticks
 30.0
+
+CHOOSER
+45
+197
+256
+242
+input-folder
+input-folder
+"dummy" "columbia"
+0
+
+BUTTON
+42
+40
+116
+74
+NIL
+setup
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+124
+41
+188
+75
+NIL
+go
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+INPUTBOX
+43
+114
+150
+174
+alpha
+1.0
+1
+0
+Number
+
+INPUTBOX
+155
+114
+257
+174
+beta
+10.0
+1
+0
+Number
+
+PLOT
+835
+79
+1431
+484
+Lambdas
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+true
+"ask groups [\n  create-temporary-plot-pen name\n  set-plot-pen-color color\n]" "ask groups [\n  set-current-plot-pen name\n  plot lambda\n]"
+PENS
 
 @#$#@#$#@
 ## WHAT IS IT?
