@@ -57,19 +57,20 @@ to go
 end
 
 to update-lambda ; group command
-  let all-attacks map [ t -> (list 1 t) ] attacks
+  let lambda-star 0
+  foreach attacks [ t ->
+    set lambda-star lambda-star + effect 1 t
+  ]
   ask my-links [
     foreach [ attacks ] of other-end [ t ->
-      set all-attacks lput (list weight t) all-attacks
+      set lambda-star lambda-star + effect weight t
     ]
   ]
-  set lambda lambda-star mu all-attacks ticks
+  set lambda mu + lambda-star
 end
 
-to-report lambda-star [ the-mu the-wt-pairs t ]
-  report the-mu + sum map [ wt ->
-    (item 0 wt) * alpha * exp (- beta * (t - (item 1 wt)))
-  ] the-wt-pairs
+to-report effect [ w t ]
+  report w * alpha * exp (- beta * (ticks - t))
 end
 
 to generate-attacks ; group command
