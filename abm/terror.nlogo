@@ -1,4 +1,4 @@
-extensions [ table csv ]
+extensions [ table csv profiler ]
 
 breed [ groups group ]
 groups-own [
@@ -91,6 +91,15 @@ end
 
 to-report too-many-attacks?
   report any? groups with [ num-attacks >= stopping-threshold ]
+end
+
+to profile
+  setup                  ; set up the model
+  profiler:start         ; start profiling
+  repeat 1826 [ go ]     ; run something you want to measure
+  profiler:stop          ; stop profiling
+  print profiler:report  ; view the results
+  profiler:reset         ; clear the data
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
