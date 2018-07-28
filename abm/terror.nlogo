@@ -57,16 +57,13 @@ to go
 end
 
 to update-lambda ; group command
-  let lists-of-wt-pairs [
-    wt-pairs weight ([ attacks ] of other-end)
-  ] of my-links
-  let attacks-of-neighbors reduce sentence lists-of-wt-pairs
-  let my-attacks wt-pairs 1 attacks
-  set lambda lambda-star mu (sentence my-attacks attacks-of-neighbors) ticks
-end
-
-to-report wt-pairs [ w ts ] ; link reporter
-  report map [ t -> (list w t) ] ts
+  let all-attacks map [ t -> (list 1 t) ] attacks
+  ask my-links [
+    foreach [ attacks ] of other-end [ t ->
+      set all-attacks lput (list weight t) all-attacks
+    ]
+  ]
+  set lambda lambda-star mu all-attacks ticks
 end
 
 to-report lambda-star [ the-mu the-wt-pairs t ]
