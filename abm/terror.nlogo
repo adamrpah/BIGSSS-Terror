@@ -75,7 +75,9 @@ end
 
 to generate-attacks ; group command
   set num-attacks random-poisson lambda
-  set attacks sentence attacks (n-values num-attacks [ ticks ])
+  repeat num-attacks [
+    set attacks lput ticks attacks
+  ]
 end
 
 to write-results
