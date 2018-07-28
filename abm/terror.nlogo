@@ -6,6 +6,7 @@ groups-own [
   mu
   attacks
   lambda
+  num-attacks ; number of attacks in the current tick
 ]
 
 links-own [
@@ -75,8 +76,8 @@ to-report lambda-star [ the-mu the-wt-pairs t ]
 end
 
 to generate-attacks ; group command
-  let n random-poisson lambda
-  set attacks sentence attacks (n-values n [ ticks ])
+  set num-attacks random-poisson lambda
+  set attacks sentence attacks (n-values num-attacks [ ticks ])
 end
 
 to write-results
@@ -89,9 +90,7 @@ to write-results
 end
 
 to-report too-many-attacks?
-  report reduce or [
-    not empty? filter [ n -> n > stopping-threshold ] table:values table:counts attacks
-  ] of groups
+  report any? groups with [ num-attacks >= stopping-threshold ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -168,18 +167,18 @@ NIL
 PLOT
 820
 8
-1417
-539
+1418
+182
 Lambdas
-NIL
-NIL
+ticks
+lambdas
 0.0
 10.0
 0.0
 10.0
 true
 true
-"ask groups [\n  create-temporary-plot-pen name\n  set-plot-pen-color color\n]" "ask groups [\n  set-current-plot-pen name\n  plot lambda\n]"
+"foreach sort groups [ g ->\n  ask g [\n    create-temporary-plot-pen name\n    set-plot-pen-color color\n  ]\n]" "foreach sort groups [ g ->\n  ask g [\n    set-current-plot-pen name\n    plot lambda\n  ]\n]"
 PENS
 
 SLIDER
@@ -206,7 +205,7 @@ beta
 beta
 0
 50
-3.0
+11.6
 0.1
 1
 NIL
@@ -221,7 +220,7 @@ omega
 omega
 0
 1
-0.0
+0.1
 0.05
 1
 NIL
@@ -269,6 +268,23 @@ stopping-threshold
 1
 attacks
 HORIZONTAL
+
+PLOT
+820
+195
+1417
+476
+Attacks
+ticks
+attacks
+0.0
+10.0
+0.0
+10.0
+true
+true
+"foreach sort groups [ g ->\n  ask g [\n    create-temporary-plot-pen name\n    set-plot-pen-color color\n  ]\n]" "foreach sort groups [ g ->\n  ask g [\n    set-current-plot-pen name\n    plot length filter [ t -> t = ticks - 1 ] attacks\n  ]\n]"
+PENS
 
 @#$#@#$#@
 ## WHAT IS IT?
