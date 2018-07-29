@@ -183,7 +183,7 @@ alpha
 alpha
 0
 5
-0.8
+0.7
 0.05
 1
 NIL
@@ -198,7 +198,7 @@ beta
 beta
 0
 50
-6.0
+9.5
 0.1
 1
 NIL
@@ -620,7 +620,7 @@ NetLogo 6.0.4
       <value value="&quot;Colombia&quot;"/>
       <value value="&quot;Iraq&quot;"/>
     </enumeratedValueSet>
-    <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.5"/>
+    <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.3"/>
     <steppedValueSet variable="beta" first="5" step="0.5" last="10"/>
     <enumeratedValueSet variable="output-folder">
       <value value="&quot;20180727A&quot;"/>
