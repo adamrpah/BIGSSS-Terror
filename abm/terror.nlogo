@@ -15,7 +15,7 @@ links-own [
 
 to setup
   clear-all
-  print (word "run: " behaviorspace-run-number  ", country: " input-folder ", alpha: " alpha ", beta: " beta ", omega: " omega)
+  print (word "run: " behaviorspace-run-number ", alpha: " alpha ", beta: " beta ", omega: " omega ", country: " input-folder)
   let path (word "inputs/" input-folder "/")
 
   ; Initialise the groups
