@@ -174,23 +174,6 @@ NIL
 NIL
 0
 
-PLOT
-820
-8
-1418
-182
-Lambdas
-ticks
-lambdas
-0.0
-10.0
-0.0
-10.0
-true
-true
-"foreach sort groups [ g ->\n  ask g [\n    create-temporary-plot-pen name\n    set-plot-pen-color color\n  ]\n]" "foreach sort groups [ g ->\n  ask g [\n    set-current-plot-pen name\n    plot lambda\n  ]\n]"
-PENS
-
 SLIDER
 25
 90
@@ -200,7 +183,7 @@ alpha
 alpha
 0
 5
-1.0
+0.8
 0.05
 1
 NIL
@@ -215,7 +198,7 @@ beta
 beta
 0
 50
-11.6
+6.0
 0.1
 1
 NIL
@@ -230,7 +213,7 @@ omega
 omega
 0
 1
-0.1
+0.0
 0.05
 1
 NIL
@@ -278,23 +261,6 @@ stopping-threshold
 1
 attacks
 HORIZONTAL
-
-PLOT
-820
-195
-1417
-476
-Attacks
-ticks
-attacks
-0.0
-10.0
-0.0
-10.0
-true
-true
-"foreach sort groups [ g ->\n  ask g [\n    create-temporary-plot-pen name\n    set-plot-pen-color color\n  ]\n]" "foreach sort groups [ g ->\n  ask g [\n    set-current-plot-pen name\n    plot length filter [ t -> t = ticks - 1 ] attacks\n  ]\n]"
-PENS
 
 @#$#@#$#@
 ## WHAT IS IT?
