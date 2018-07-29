@@ -655,7 +655,7 @@ NetLogo 6.0.4
       <value value="&quot;Iraq&quot;"/>
     </enumeratedValueSet>
     <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.5"/>
-    <steppedValueSet variable="beta" first="2.5" step="0.5" last="10"/>
+    <steppedValueSet variable="beta" first="5" step="0.5" last="10"/>
     <enumeratedValueSet variable="output-folder">
       <value value="&quot;20180727A&quot;"/>
     </enumeratedValueSet>
