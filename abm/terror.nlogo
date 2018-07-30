@@ -21,10 +21,9 @@ to setup
   foreach but-first group-list [ row ->
     create-groups 1 [
       set name    item 0 row
-      set mu      read-from-string item 1 row
+      set mu      item 1 row
       set attacks []
       set label name
-      move-to one-of patches
       create-links-with other groups [
         set weight omega
       ]
@@ -43,11 +42,12 @@ to setup
       ]
     ]
   ]
-
+  layout-circle turtles 8
   reset-ticks
 end
 
 to go
+  if too-many-attacks? [ stop ]
   ask groups [
     update-lambda
     generate-attacks
@@ -80,10 +80,17 @@ to generate-attacks ; group command
 end
 
 to write-results
-  let filename (word "outputs/" output-folder "/"
+  let country input-folder ; we use the name of the input folder as the country name
+  let filename (word "outputs/" output-folder "/" country "_"
     alpha "_" beta "_" omega "_" behaviorspace-run-number ".csv")
   csv:to-file filename reduce sentence [
     map [ pair -> fput name pair ] table:to-list table:counts attacks
+  ] of groups
+end
+
+to-report too-many-attacks?
+  report reduce or [
+    not empty? filter [ n -> n > stopping-threshold ] table:values table:counts attacks
   ] of groups
 end
 @#$#@#$#@
@@ -121,8 +128,8 @@ CHOOSER
 260
 input-folder
 input-folder
-"dummy" "columbia"
-0
+"Afghanistan" "Colombia" "Iraq" "dummy"
+2
 
 BUTTON
 25
@@ -159,10 +166,10 @@ NIL
 0
 
 PLOT
-835
-79
-1431
-484
+820
+8
+1417
+539
 Lambdas
 NIL
 NIL
@@ -184,7 +191,7 @@ alpha
 alpha
 0
 5
-1.2
+1.0
 0.05
 1
 NIL
@@ -199,7 +206,7 @@ beta
 beta
 0
 50
-4.0
+3.0
 0.1
 1
 NIL
@@ -247,6 +254,21 @@ NIL
 NIL
 NIL
 0
+
+SLIDER
+25
+335
+245
+369
+stopping-threshold
+stopping-threshold
+1
+100
+25.0
+1
+1
+attacks
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -595,16 +617,19 @@ NetLogo 6.0.4
 @#$#@#$#@
 @#$#@#$#@
 <experiments>
-  <experiment name="experiment" repetitions="1" sequentialRunOrder="false" runMetricsEveryStep="false">
+  <experiment name="experiment" repetitions="1000" sequentialRunOrder="false" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
     <final>write-results</final>
-    <timeLimit steps="1461"/>
+    <timeLimit steps="1826"/>
+    <exitCondition>too-many-attacks?</exitCondition>
     <enumeratedValueSet variable="input-folder">
-      <value value="&quot;dummy&quot;"/>
+      <value value="&quot;Afghanistan&quot;"/>
+      <value value="&quot;Colombia&quot;"/>
+      <value value="&quot;Iraq&quot;"/>
     </enumeratedValueSet>
     <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.5"/>
-    <steppedValueSet variable="beta" first="4" step="0.5" last="10"/>
+    <steppedValueSet variable="beta" first="2.5" step="0.5" last="10"/>
     <enumeratedValueSet variable="output-folder">
       <value value="&quot;20180727A&quot;"/>
     </enumeratedValueSet>
