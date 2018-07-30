@@ -1,4 +1,4 @@
-extensions [ table csv ]
+extensions [ table csv profiler ]
 
 breed [ groups group ]
 groups-own [
@@ -6,6 +6,7 @@ groups-own [
   mu
   attacks
   lambda
+  num-attacks ; number of attacks in the current tick
 ]
 
 links-own [
@@ -14,6 +15,7 @@ links-own [
 
 to setup
   clear-all
+  print (word "run: " behaviorspace-run-number ", alpha: " alpha ", beta: " beta ", omega: " omega ", country: " input-folder)
   let path (word "inputs/" input-folder "/")
 
   ; Initialise the groups
@@ -56,27 +58,27 @@ to go
 end
 
 to update-lambda ; group command
-  let lists-of-wt-pairs [
-    wt-pairs weight ([ attacks ] of other-end)
-  ] of my-links
-  let attacks-of-neighbors reduce sentence lists-of-wt-pairs
-  let my-attacks wt-pairs 1 attacks
-  set lambda lambda-star mu (sentence my-attacks attacks-of-neighbors) ticks
+  let lambda-star 0
+  foreach attacks [ t ->
+    set lambda-star lambda-star + effect 1 t
+  ]
+  ask my-links [
+    foreach [ attacks ] of other-end [ t ->
+      set lambda-star lambda-star + effect weight t
+    ]
+  ]
+  set lambda mu + lambda-star
 end
 
-to-report wt-pairs [ w ts ] ; link reporter
-  report map [ t -> (list w t) ] ts
-end
-
-to-report lambda-star [ the-mu the-wt-pairs t ]
-  report the-mu + sum map [ wt ->
-    (item 0 wt) * alpha * exp (- beta * (t - (item 1 wt)))
-  ] the-wt-pairs
+to-report effect [ w t ]
+  report w * alpha * exp (- beta * (ticks - t))
 end
 
 to generate-attacks ; group command
-  let n random-poisson lambda
-  set attacks sentence attacks (n-values n [ ticks ])
+  set num-attacks min (list stopping-threshold random-poisson lambda)
+  repeat num-attacks [
+    set attacks lput ticks attacks
+  ]
 end
 
 to write-results
@@ -89,9 +91,16 @@ to write-results
 end
 
 to-report too-many-attacks?
-  report reduce or [
-    not empty? filter [ n -> n > stopping-threshold ] table:values table:counts attacks
-  ] of groups
+  report any? groups with [ num-attacks >= stopping-threshold ]
+end
+
+to profile
+  setup                  ; set up the model
+  profiler:start         ; start profiling
+  repeat 1826 [ go ]     ; run something you want to measure
+  profiler:stop          ; stop profiling
+  print profiler:report  ; view the results
+  profiler:reset         ; clear the data
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -129,7 +138,7 @@ CHOOSER
 input-folder
 input-folder
 "Afghanistan" "Colombia" "Iraq" "dummy"
-2
+1
 
 BUTTON
 25
@@ -165,23 +174,6 @@ NIL
 NIL
 0
 
-PLOT
-820
-8
-1417
-539
-Lambdas
-NIL
-NIL
-0.0
-10.0
-0.0
-10.0
-true
-true
-"ask groups [\n  create-temporary-plot-pen name\n  set-plot-pen-color color\n]" "ask groups [\n  set-current-plot-pen name\n  plot lambda\n]"
-PENS
-
 SLIDER
 25
 90
@@ -191,7 +183,7 @@ alpha
 alpha
 0
 5
-1.0
+1.3
 0.05
 1
 NIL
@@ -206,7 +198,7 @@ beta
 beta
 0
 50
-3.0
+5.0
 0.1
 1
 NIL
@@ -259,7 +251,7 @@ SLIDER
 25
 335
 245
-369
+368
 stopping-threshold
 stopping-threshold
 1
@@ -620,16 +612,18 @@ NetLogo 6.0.4
   <experiment name="experiment" repetitions="1000" sequentialRunOrder="false" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
-    <final>write-results</final>
+    <final>if not too-many-attacks? [
+  write-results
+]</final>
     <timeLimit steps="1826"/>
     <exitCondition>too-many-attacks?</exitCondition>
     <enumeratedValueSet variable="input-folder">
+      <value value="&quot;Iraq&quot;"/>
       <value value="&quot;Afghanistan&quot;"/>
       <value value="&quot;Colombia&quot;"/>
-      <value value="&quot;Iraq&quot;"/>
     </enumeratedValueSet>
-    <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.5"/>
-    <steppedValueSet variable="beta" first="2.5" step="0.5" last="10"/>
+    <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.3"/>
+    <steppedValueSet variable="beta" first="5" step="0.5" last="10"/>
     <enumeratedValueSet variable="output-folder">
       <value value="&quot;20180727A&quot;"/>
     </enumeratedValueSet>
