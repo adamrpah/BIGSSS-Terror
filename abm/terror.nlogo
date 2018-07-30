@@ -75,7 +75,7 @@ to-report effect [ w t ]
 end
 
 to generate-attacks ; group command
-  set num-attacks random-poisson lambda
+  set num-attacks min (list stopping-threshold random-poisson lambda)
   repeat num-attacks [
     set attacks lput ticks attacks
   ]
@@ -251,7 +251,7 @@ SLIDER
 25
 335
 245
-369
+368
 stopping-threshold
 stopping-threshold
 1
