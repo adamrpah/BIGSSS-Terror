@@ -138,7 +138,7 @@ CHOOSER
 input-folder
 input-folder
 "Afghanistan" "Colombia" "Iraq" "dummy"
-2
+1
 
 BUTTON
 25
@@ -183,7 +183,7 @@ alpha
 alpha
 0
 5
-1.0
+1.3
 0.05
 1
 NIL
@@ -198,7 +198,7 @@ beta
 beta
 0
 50
-6.5
+5.0
 0.1
 1
 NIL
@@ -619,6 +619,8 @@ NetLogo 6.0.4
     <exitCondition>too-many-attacks?</exitCondition>
     <enumeratedValueSet variable="input-folder">
       <value value="&quot;Iraq&quot;"/>
+      <value value="&quot;Afghanistan&quot;"/>
+      <value value="&quot;Colombia&quot;"/>
     </enumeratedValueSet>
     <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.3"/>
     <steppedValueSet variable="beta" first="5" step="0.5" last="10"/>
