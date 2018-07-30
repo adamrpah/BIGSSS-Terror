@@ -183,7 +183,7 @@ alpha
 alpha
 0
 5
-0.7
+1.0
 0.05
 1
 NIL
@@ -198,7 +198,7 @@ beta
 beta
 0
 50
-9.5
+6.5
 0.1
 1
 NIL
@@ -612,7 +612,9 @@ NetLogo 6.0.4
   <experiment name="experiment" repetitions="1000" sequentialRunOrder="false" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
-    <final>write-results</final>
+    <final>if not too-many-attacks? [
+  write-results
+]</final>
     <timeLimit steps="1826"/>
     <exitCondition>too-many-attacks?</exitCondition>
     <enumeratedValueSet variable="input-folder">
