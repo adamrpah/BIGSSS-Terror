@@ -15,22 +15,29 @@ links-own [
 
 to setup
   clear-all
+  set-default-shape groups "circle"
   print (word "run: " behaviorspace-run-number ", alpha: " alpha ", beta: " beta ", omega: " omega ", country: " input-folder)
   let path (word "inputs/" input-folder "/")
 
   ; Initialise the groups
   let group-list csv:from-file (word path "groups.csv")
-  foreach but-first group-list [ row ->
+  let num-groups (length group-list - 1)
+  (foreach but-first group-list (range num-groups) [ [row i] ->
     create-groups 1 [
       set name    item 0 row
       set mu      item 1 row
       set attacks []
       set label name
+      let hue i * (360 / num-groups)
+      print i mod 2
+      set color lput 100 hsb hue 100 (50 + (50 * (i mod 2)))
+      set heading hue
+      forward 9
       create-links-with other groups [
         set weight omega
       ]
     ]
-  ]
+  ])
 
   ; Create the links between the groups
   let link-list csv:from-file (word path "network.csv")
@@ -44,8 +51,24 @@ to setup
       ]
     ]
   ]
-  layout-circle turtles 8
+  layout
   reset-ticks
+end
+
+to layout
+  ask patches [ set pcolor white ]
+  ask groups [
+    set label-color black
+    set xcor xcor + 6
+  ]
+  ask links [
+    ifelse weight = 1 [
+      set color [255 0 0 150]
+      set thickness 0.2
+    ] [
+      set color [0 0 0 75]
+    ]
+  ]
 end
 
 to go
@@ -106,8 +129,8 @@ end
 GRAPHICS-WINDOW
 285
 6
-816
-538
+817
+347
 -1
 -1
 15.85
@@ -122,8 +145,8 @@ GRAPHICS-WINDOW
 1
 -16
 16
--16
-16
+-10
+10
 0
 0
 1
@@ -138,7 +161,7 @@ CHOOSER
 input-folder
 input-folder
 "Afghanistan" "Colombia" "Iraq" "dummy"
-1
+0
 
 BUTTON
 25
