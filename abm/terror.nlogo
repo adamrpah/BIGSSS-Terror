@@ -616,8 +616,7 @@ NetLogo 6.0.4
     <timeLimit steps="1826"/>
     <exitCondition>too-many-attacks?</exitCondition>
     <enumeratedValueSet variable="input-folder">
-      <value value="&quot;Afghanistan&quot;"/>
-      <value value="&quot;Colombia&quot;"/>
+      <value value="&quot;Iraq&quot;"/>
     </enumeratedValueSet>
     <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.3"/>
     <steppedValueSet variable="beta" first="5" step="0.5" last="10"/>
