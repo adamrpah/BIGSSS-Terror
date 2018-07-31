@@ -205,7 +205,7 @@ alpha
 alpha
 0
 5
-1.3
+1.0
 0.05
 1
 NIL
@@ -220,7 +220,7 @@ beta
 beta
 0
 50
-5.0
+15.0
 0.1
 1
 NIL
@@ -247,7 +247,7 @@ INPUTBOX
 245
 325
 output-folder
-20180727A
+20180731
 1
 0
 String
@@ -666,11 +666,7 @@ NetLogo 6.0.4
     <enumeratedValueSet variable="output-folder">
       <value value="&quot;20180727A&quot;"/>
     </enumeratedValueSet>
-    <enumeratedValueSet variable="omega">
-      <value value="0"/>
-      <value value="0.1"/>
-      <value value="1"/>
-    </enumeratedValueSet>
+    <steppedValueSet variable="omega" first="0" step="0.1" last="1"/>
   </experiment>
 </experiments>
 @#$#@#$#@
