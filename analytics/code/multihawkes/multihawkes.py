@@ -89,10 +89,10 @@ def main(args):
             'W': hawkes_model.W_effective[i].tolist(),
             'lambda': float(hawkes_model.lambda0[i])
         }
-    json.dump(dataset, open('%s/%s_multihawkes.json' % (savedir, country), 'w'), indent=4)
+    json.dump(dataset, open('%s/%s_multihawkes.json' % (args.savedir, country), 'w'), indent=4)
     #Plot it
     hawkes_model.plot(color="#e41a1c")
-    plt.savefig('%s/%s_multihawkes.eps' % (savedir, country))
+    plt.savefig('%s/%s_multihawkes.eps' % (args.savedir, country))
 
 
 if __name__ == '__main__':
