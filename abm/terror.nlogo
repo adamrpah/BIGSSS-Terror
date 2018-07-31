@@ -29,7 +29,6 @@ to setup
       set attacks []
       set label name
       let hue i * (360 / num-groups)
-      print i mod 2
       set color lput 100 hsb hue 100 (50 + (50 * (i mod 2)))
       set heading hue
       forward 9
@@ -66,7 +65,7 @@ to layout
       set color [255 0 0 150]
       set thickness 0.2
     ] [
-      set color [0 0 0 75]
+      set color (list 0 0 0 (150 - 20 * ln count links))
     ]
   ]
 end
@@ -129,7 +128,7 @@ end
 GRAPHICS-WINDOW
 285
 6
-817
+816
 347
 -1
 -1
@@ -147,8 +146,8 @@ GRAPHICS-WINDOW
 16
 -10
 10
-0
-0
+1
+1
 1
 ticks
 30.0
@@ -161,7 +160,7 @@ CHOOSER
 input-folder
 input-folder
 "Afghanistan" "Colombia" "Iraq" "dummy"
-0
+1
 
 BUTTON
 25
@@ -206,7 +205,7 @@ alpha
 alpha
 0
 5
-1.3
+1.0
 0.05
 1
 NIL
@@ -221,7 +220,7 @@ beta
 beta
 0
 50
-5.0
+15.0
 0.1
 1
 NIL
@@ -248,7 +247,7 @@ INPUTBOX
 245
 325
 output-folder
-20180727A
+20180731
 1
 0
 String
@@ -284,6 +283,23 @@ stopping-threshold
 1
 attacks
 HORIZONTAL
+
+PLOT
+821
+8
+1418
+289
+Attacks
+ticks
+attacks
+0.0
+5.0
+0.0
+10.0
+true
+true
+"foreach sort groups [ g ->\n  ask g [\n    create-temporary-plot-pen name\n    set-plot-pen-color color\n  ]\n]" "foreach sort groups [ g ->\n  ask g [\n    set-current-plot-pen name\n    plot length filter [ t -> t = ticks - 1 ] attacks\n  ]\n]"
+PENS
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -645,16 +661,21 @@ NetLogo 6.0.4
       <value value="&quot;Afghanistan&quot;"/>
       <value value="&quot;Colombia&quot;"/>
     </enumeratedValueSet>
-    <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.3"/>
-    <steppedValueSet variable="beta" first="5" step="0.5" last="10"/>
-    <enumeratedValueSet variable="output-folder">
-      <value value="&quot;20180727A&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="omega">
-      <value value="0"/>
+    <enumeratedValueSet variable="alpha">
+      <value value="0.05"/>
       <value value="0.1"/>
-      <value value="1"/>
+      <value value="0.15"/>
+      <value value="0.2"/>
+      <value value="0.3"/>
+      <value value="0.5"/>
+      <value value="0.7"/>
+      <value value="0.9"/>
     </enumeratedValueSet>
+    <steppedValueSet variable="beta" first="4" step="0.5" last="8"/>
+    <enumeratedValueSet variable="output-folder">
+      <value value="&quot;20180731&quot;"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="omega" first="0" step="0.1" last="1"/>
   </experiment>
 </experiments>
 @#$#@#$#@
