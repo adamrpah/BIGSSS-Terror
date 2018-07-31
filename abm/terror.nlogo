@@ -661,10 +661,19 @@ NetLogo 6.0.4
       <value value="&quot;Afghanistan&quot;"/>
       <value value="&quot;Colombia&quot;"/>
     </enumeratedValueSet>
-    <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.3"/>
-    <steppedValueSet variable="beta" first="5" step="0.5" last="10"/>
+    <enumeratedValueSet variable="alpha">
+      <value value="0.05"/>
+      <value value="0.1"/>
+      <value value="0.15"/>
+      <value value="0.2"/>
+      <value value="0.3"/>
+      <value value="0.5"/>
+      <value value="0.7"/>
+      <value value="0.9"/>
+    </enumeratedValueSet>
+    <steppedValueSet variable="beta" first="4" step="0.5" last="8"/>
     <enumeratedValueSet variable="output-folder">
-      <value value="&quot;20180727A&quot;"/>
+      <value value="&quot;20180731&quot;"/>
     </enumeratedValueSet>
     <steppedValueSet variable="omega" first="0" step="0.1" last="1"/>
   </experiment>
