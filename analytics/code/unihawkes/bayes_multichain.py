@@ -6,6 +6,7 @@ import math
 import os
 import random
 import numpy as np
+import pandas as pd
 sys.path.append('..')
 from support import loaders
 
