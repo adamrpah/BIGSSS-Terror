@@ -5,6 +5,11 @@
 # Session Data files
 .RData
 
+# Out files
+*.out
+__pycache__/*
+.ipynb_checkpoints/*
+
 # Example code in package build process
 *-Ex.R
 
