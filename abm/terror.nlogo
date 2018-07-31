@@ -160,7 +160,7 @@ CHOOSER
 input-folder
 input-folder
 "Afghanistan" "Colombia" "Iraq" "dummy"
-1
+2
 
 BUTTON
 25
@@ -205,7 +205,7 @@ alpha
 alpha
 0
 5
-1.0
+0.05
 0.05
 1
 NIL
@@ -220,7 +220,7 @@ beta
 beta
 0
 50
-15.0
+5.0
 0.1
 1
 NIL
@@ -235,7 +235,7 @@ omega
 omega
 0
 1
-0.0
+0.3
 0.05
 1
 NIL
@@ -298,8 +298,19 @@ attacks
 10.0
 true
 true
-"foreach sort groups [ g ->\n  ask g [\n    create-temporary-plot-pen name\n    set-plot-pen-color color\n  ]\n]" "foreach sort groups [ g ->\n  ask g [\n    set-current-plot-pen name\n    plot length filter [ t -> t = ticks - 1 ] attacks\n  ]\n]"
+"foreach sort groups [ g ->\n  ask g [\n    create-temporary-plot-pen name\n    set-plot-pen-color color\n  ]\n]" "if update-plots? [\n  foreach sort groups [ g ->\n    ask g [\n      set-current-plot-pen name\n      plotxy ticks length filter [ t -> t = ticks - 1 ] attacks\n    ]\n  ]\n]"
 PENS
+
+SWITCH
+820
+310
+972
+343
+update-plots?
+update-plots?
+1
+1
+-1000
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -676,6 +687,9 @@ NetLogo 6.0.4
       <value value="&quot;20180731&quot;"/>
     </enumeratedValueSet>
     <steppedValueSet variable="omega" first="0" step="0.1" last="1"/>
+    <enumeratedValueSet variable="update-plots?">
+      <value value="false"/>
+    </enumeratedValueSet>
   </experiment>
 </experiments>
 @#$#@#$#@
