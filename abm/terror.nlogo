@@ -29,7 +29,6 @@ to setup
       set attacks []
       set label name
       let hue i * (360 / num-groups)
-      print i mod 2
       set color lput 100 hsb hue 100 (50 + (50 * (i mod 2)))
       set heading hue
       forward 9
@@ -66,7 +65,7 @@ to layout
       set color [255 0 0 150]
       set thickness 0.2
     ] [
-      set color [0 0 0 75]
+      set color (list 0 0 0 (150 - 20 * ln count links))
     ]
   ]
 end
@@ -147,8 +146,8 @@ GRAPHICS-WINDOW
 16
 -10
 10
-0
-0
+1
+1
 1
 ticks
 30.0
@@ -161,7 +160,7 @@ CHOOSER
 input-folder
 input-folder
 "Afghanistan" "Colombia" "Iraq" "dummy"
-0
+1
 
 BUTTON
 25
