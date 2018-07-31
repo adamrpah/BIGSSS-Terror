@@ -129,7 +129,7 @@ end
 GRAPHICS-WINDOW
 285
 6
-817
+816
 347
 -1
 -1
@@ -284,6 +284,23 @@ stopping-threshold
 1
 attacks
 HORIZONTAL
+
+PLOT
+821
+8
+1418
+289
+Attacks
+ticks
+attacks
+0.0
+5.0
+0.0
+10.0
+true
+true
+"foreach sort groups [ g ->\n  ask g [\n    create-temporary-plot-pen name\n    set-plot-pen-color color\n  ]\n]" "foreach sort groups [ g ->\n  ask g [\n    set-current-plot-pen name\n    plot length filter [ t -> t = ticks - 1 ] attacks\n  ]\n]"
+PENS
 
 @#$#@#$#@
 ## WHAT IS IT?
