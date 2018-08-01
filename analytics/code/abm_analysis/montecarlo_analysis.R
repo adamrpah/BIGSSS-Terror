@@ -1,24 +1,36 @@
 library("tidyverse")
 
-untar("C:/Users/smncr/Documents/BIGSSS/bigss_terror_20180730A.tar.gz")
-
 setwd("C:/Users/smncr/Documents/BIGSSS/bigss_terror_20180730A")
 
-diff_real <- data.frame(country = character() ,gname=character(), diff=double())
+diff_real <- data.frame(country = character() ,gname=character(), diff=I(list()))
 results <- data.frame(country = character(), alpha = double(), beta = double(), 
                       omega = double(), gname=character(), pass = double(), pvalue=double())
 
-for (country in c("Afghanistan", "Colombia", "Iraq")) {
+#for (country in c("Afghanistan", "Colombia", "Iraq")) {
+  country <- "Colombia"
   
-  real <- read_csv(paste("C:\Users\smncr\Documents\GitHub\BIGSSS-Terror\analytics\data", 
-                         country, "_abm_events.csv")) %>%
+  real <- read_csv(paste("C:/Users/smncr/Documents/GitHub/BIGSSS-Terror/analytics/data/", 
+                         country, "_abm_events.csv", sep = "")) %>%
     select(gname, idate)
-  
+ 
+  for (group in unique(real$gname)) {
+    group_df <- filter(real, gname == group) 
+    d <- diff(group_df$idate) 
+    if (length(d) != 0) {
+      print( rbind(diff_real, data.frame(country = country, gname = group ) ) )
+      temp<-data.frame(country =country, gname=group)
+      temp$diff <- d
+      print(temp)
+                       
+    }
+  }
+  diff_real
+   
   for (group in unique(real$gname)) {
     
-    filter(real, gname == group)
-    d <- diff(real$idate)
-    addrow(diff_real, country = country, gname = group, d = diff)
+    group_df <- filter(real, gname == group)
+    d <- diff(group_df$idate)
+    add_row(diff_real, country = country, gname = group, diff = I(d))
     
   }
   
@@ -50,7 +62,7 @@ for (country in c("Afghanistan", "Colombia", "Iraq")) {
           }
         }
         
-        pass_fail  <- ls()
+        pass_fail  <- list()
         
         for (group in unique(group_pvalues$gname)) {
           
@@ -59,7 +71,7 @@ for (country in c("Afghanistan", "Colombia", "Iraq")) {
           pass <- if_else(fail_count/length(group_pvalues) > 0.05, 1, 0)  # check this function
           pass_fail <-  c(pass_fail, pass)
           
-        }  
+        }  # close group
         
         x <- sum(pass_fail = 1)
         n <- length
@@ -72,10 +84,9 @@ for (country in c("Afghanistan", "Colombia", "Iraq")) {
                   gname = group, pass = pass, p_value = group_pvalues)
           
         }
-      }
-    }
-    
-  }
-}
+      } # close omega
+    } # close beta
+  } # close alpha
+#} # close country
 
 
