@@ -161,7 +161,11 @@ CHOOSER
 input-folder
 input-folder
 "Afghanistan" "Colombia" "Iraq" "dummy"
+<<<<<<< HEAD
 0
+=======
+2
+>>>>>>> 413e1f00a45d72ead15b36c796daefd442205dde
 
 BUTTON
 25
@@ -206,7 +210,11 @@ alpha
 alpha
 0
 5
+<<<<<<< HEAD
 1.3
+=======
+0.05
+>>>>>>> 413e1f00a45d72ead15b36c796daefd442205dde
 0.05
 1
 NIL
@@ -236,7 +244,7 @@ omega
 omega
 0
 1
-0.0
+0.3
 0.05
 1
 NIL
@@ -285,6 +293,37 @@ stopping-threshold
 attacks
 HORIZONTAL
 
+<<<<<<< HEAD
+=======
+PLOT
+821
+8
+1418
+289
+Attacks
+ticks
+attacks
+0.0
+5.0
+0.0
+10.0
+true
+true
+"foreach sort groups [ g ->\n  ask g [\n    create-temporary-plot-pen name\n    set-plot-pen-color color\n  ]\n]" "if update-plots? [\n  foreach sort groups [ g ->\n    ask g [\n      set-current-plot-pen name\n      plotxy ticks length filter [ t -> t = ticks - 1 ] attacks\n    ]\n  ]\n]"
+PENS
+
+SWITCH
+820
+310
+972
+343
+update-plots?
+update-plots?
+1
+1
+-1000
+
+>>>>>>> 413e1f00a45d72ead15b36c796daefd442205dde
 @#$#@#$#@
 ## WHAT IS IT?
 
@@ -632,7 +671,7 @@ NetLogo 6.0.4
 @#$#@#$#@
 @#$#@#$#@
 <experiments>
-  <experiment name="experiment" repetitions="1000" sequentialRunOrder="false" runMetricsEveryStep="false">
+  <experiment name="experiment" repetitions="500" sequentialRunOrder="false" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
     <final>if not too-many-attacks? [
@@ -655,6 +694,13 @@ NetLogo 6.0.4
       <value value="0.1"/>
       <value value="1"/>
     </enumeratedValueSet>
+<<<<<<< HEAD
+=======
+    <steppedValueSet variable="omega" first="0" step="0.1" last="1"/>
+    <enumeratedValueSet variable="update-plots?">
+      <value value="false"/>
+    </enumeratedValueSet>
+>>>>>>> 413e1f00a45d72ead15b36c796daefd442205dde
   </experiment>
 </experiments>
 @#$#@#$#@
