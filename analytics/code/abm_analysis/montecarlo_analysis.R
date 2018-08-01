@@ -12,11 +12,24 @@ results <- data.frame(country = character(), alpha = double(), beta = double(),
   real <- read_csv(paste("C:/Users/smncr/Documents/GitHub/BIGSSS-Terror/analytics/data/", 
                          country, "_abm_events.csv", sep = "")) %>%
     select(gname, idate)
-  
+ 
+  for (group in unique(real$gname)) {
+    group_df <- filter(real, gname == group) 
+    d <- diff(group_df$idate) 
+    if (length(d) != 0) {
+      print( rbind(diff_real, data.frame(country = country, gname = group ) ) )
+      temp<-data.frame(country =country, gname=group)
+      temp$diff <- d
+      print(temp)
+                       
+    }
+  }
+  diff_real
+   
   for (group in unique(real$gname)) {
     
-    filter(real, gname == group)
-    d <- diff(real$idate)
+    group_df <- filter(real, gname == group)
+    d <- diff(group_df$idate)
     add_row(diff_real, country = country, gname = group, diff = I(d))
     
   }
