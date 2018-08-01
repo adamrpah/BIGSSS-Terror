@@ -29,6 +29,7 @@ to setup
       set attacks []
       set label name
       let hue i * (360 / num-groups)
+      print i mod 2
       set color lput 100 hsb hue 100 (50 + (50 * (i mod 2)))
       set heading hue
       forward 9
@@ -65,7 +66,7 @@ to layout
       set color [255 0 0 150]
       set thickness 0.2
     ] [
-      set color (list 0 0 0 (150 - 20 * ln count links))
+      set color [0 0 0 75]
     ]
   ]
 end
@@ -128,7 +129,7 @@ end
 GRAPHICS-WINDOW
 285
 6
-816
+817
 347
 -1
 -1
@@ -146,8 +147,8 @@ GRAPHICS-WINDOW
 16
 -10
 10
-1
-1
+0
+0
 1
 ticks
 30.0
@@ -160,7 +161,11 @@ CHOOSER
 input-folder
 input-folder
 "Afghanistan" "Colombia" "Iraq" "dummy"
+<<<<<<< HEAD
+0
+=======
 2
+>>>>>>> 413e1f00a45d72ead15b36c796daefd442205dde
 
 BUTTON
 25
@@ -205,7 +210,11 @@ alpha
 alpha
 0
 5
+<<<<<<< HEAD
+1.3
+=======
 0.05
+>>>>>>> 413e1f00a45d72ead15b36c796daefd442205dde
 0.05
 1
 NIL
@@ -247,7 +256,7 @@ INPUTBOX
 245
 325
 output-folder
-20180731
+20180727A
 1
 0
 String
@@ -284,6 +293,8 @@ stopping-threshold
 attacks
 HORIZONTAL
 
+<<<<<<< HEAD
+=======
 PLOT
 821
 8
@@ -312,6 +323,7 @@ update-plots?
 1
 -1000
 
+>>>>>>> 413e1f00a45d72ead15b36c796daefd442205dde
 @#$#@#$#@
 ## WHAT IS IT?
 
@@ -672,24 +684,23 @@ NetLogo 6.0.4
       <value value="&quot;Afghanistan&quot;"/>
       <value value="&quot;Colombia&quot;"/>
     </enumeratedValueSet>
-    <enumeratedValueSet variable="alpha">
-      <value value="0.05"/>
-      <value value="0.1"/>
-      <value value="0.15"/>
-      <value value="0.2"/>
-      <value value="0.3"/>
-      <value value="0.5"/>
-      <value value="0.7"/>
-      <value value="0.9"/>
-    </enumeratedValueSet>
-    <steppedValueSet variable="beta" first="4" step="0.5" last="8"/>
+    <steppedValueSet variable="alpha" first="0.5" step="0.1" last="1.3"/>
+    <steppedValueSet variable="beta" first="5" step="0.5" last="10"/>
     <enumeratedValueSet variable="output-folder">
-      <value value="&quot;20180731&quot;"/>
+      <value value="&quot;20180727A&quot;"/>
     </enumeratedValueSet>
+    <enumeratedValueSet variable="omega">
+      <value value="0"/>
+      <value value="0.1"/>
+      <value value="1"/>
+    </enumeratedValueSet>
+<<<<<<< HEAD
+=======
     <steppedValueSet variable="omega" first="0" step="0.1" last="1"/>
     <enumeratedValueSet variable="update-plots?">
       <value value="false"/>
     </enumeratedValueSet>
+>>>>>>> 413e1f00a45d72ead15b36c796daefd442205dde
   </experiment>
 </experiments>
 @#$#@#$#@
