@@ -1,7 +1,7 @@
 import os
 ROOT = os.path.expanduser('~') + '/Dropbox/Projects/BIGSSS/Data/GTD/'
 
-def load_gtd():
+def load_gtd(index_col=0):
     '''
     Loads the entire Global Terrorism Database excel file set
     '''
@@ -13,7 +13,7 @@ def load_gtd():
     df = pd.concat(dfset)
     return df
 
-def load_country_data(fname, start=2001, end=2005):
+def load_country_data(fname, start=2001, end=2005, index_col=0):
     '''
     Loads and cleans a country csv cut
     '''
@@ -33,7 +33,7 @@ def load_country_data(fname, start=2001, end=2005):
     import pandas as pd
     from datetime import datetime
     #Load the dataframe
-    tdf = pd.read_csv(fname, index_col=0)
+    tdf = pd.read_csv(fname, index_col=index_col)
     #Group name handler
     tdf['gname'] = tdf['gname'].apply(lambda x: clean_names(x, 'AQI', ['Tawhid and Jihad', 'Al-Qa`ida in Iraq']))
     tdf['gname'] = tdf['gname'].apply(lambda x: clean_names(x, 'Al-Qaeda', ['Al-Qa`ida']))

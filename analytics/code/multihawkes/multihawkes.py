@@ -23,14 +23,19 @@ from support import loaders
 
 #Global directories and variables
 
-def tol_checker(lps_runs, tol=0.1):
+def tol_checker(ptraces, tol=0.01):
     tolpass = None
-    mean = np.mean(lps_runs[-10:])
-    for tol_val in lps_runs[-10:]:
-        if mean - tol < tol_val and tol_val < mean+tol:
-            tolpass = False
-    if srfpass == None:
-        tolpass = True
+    tolcheck = []
+    for trace in ptraces.values():
+        mean_trace = np.mean(trace)
+        if np.mean([(trace_value-mean_trace)/mean_trace for trace_value in trace]) < tol:
+            tolcheck.append(1)
+        else:
+            tolcheck.append(0)
+    if np.mean(tolcheck) == 1:
+        tolpass=True
+    else:
+        tolpass=False
     return tolpass
 
 def main(args):
@@ -41,7 +46,7 @@ def main(args):
     #Get teh country
     country = args.datafile.split('/')[-1].split('_')[0]
     #Load the data
-    df = loaders.load_country_data(args.datafile, start = args.start_year, end = args.end_year)
+    df = loaders.load_country_data(args.datafile, index_col=False)
     #Stitch the data together on a real number range
     date_ordinals = pd.DataFrame(pd.date_range('2001-01-01', '2005-12-31').values, columns=['date'])
     #Convert each group to the date range
@@ -74,12 +79,19 @@ def main(args):
     tolpass = False
     i = 0
     lps_runs = list( range(0, 100, 10) )
+    parameter_trace = {g:[] for g in gnames}
     while tolpass == False:
         hawkes_model.resample_model()
+        #record the log probability
         lps_runs.append(hawkes_model.log_probability())
+        #Record the parameters
+        for i,group in enumerate(gnames):
+            parameter_trace[group].append(hawkes_model.lambda0[i])
+        #increment
         i += 1
+        #Start checking
         if i > 1000:
-            break
+            tolpass = tol_checker(parameter_trace)
     #Pull the data
     dataset = {}
     header = ['gname', 'A', 'B', 'W_effective', 'lambda0']
