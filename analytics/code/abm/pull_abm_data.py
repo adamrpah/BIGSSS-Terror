@@ -39,18 +39,18 @@ for country in ['Afghanistan', 'Colombia', 'Iraq']:
                             sim_interevent = np.diff(timeset)
                             D, p = ks_2samp(sim_interevent, empirical_data[group])
                             group_pvalues[group].append(p)
-                    #Do the pass fail
-                    pass_groups, fail_groups = 0, 0
-                    for group, pval_list in group_pvalues.items():
-                        fail_percentage = len([p for p in pval_list if p <0.05]) / max_file_count
-                        if fail_percentage >0.05:
-                            fail_groups += 1
-                        else:
-                            pass_groups += 1
-                    #Run the binomial test
-                    p = binom_test(pass_groups, pass_groups + fail_groups)
-                    #keep it
-                    record.append([country, alpha, beta, omega, p])
+                #Do the pass fail
+                pass_groups, fail_groups = 0, 0
+                for group, pval_list in group_pvalues.items():
+                    fail_percentage = len([p for p in pval_list if p <0.05]) / max_file_count
+                    if fail_percentage >0.05:
+                        fail_groups += 1
+                    else:
+                        pass_groups += 1
+                #Run the binomial test
+                p = binom_test(pass_groups, pass_groups + fail_groups)
+                #keep it
+                record.append([country, alpha, beta, omega, p])
 #create the dataframe and write it
 with open('../../results/abm_pvalue_analysis.csv', 'w') as wfile:
     print('country,alpha,beta,omega,pvalue', file = wfile)
