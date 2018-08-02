@@ -92,6 +92,8 @@ def main(args):
         #Start checking
         if i > 1000:
             tolpass = tol_checker(parameter_trace)
+            if args.breakearly == True:
+                break
     #Pull the data
     dataset = {}
     header = ['gname', 'A', 'B', 'W_effective', 'lambda0']
@@ -111,9 +113,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="")
     parser.add_argument('datafile', action='store', help='Country csv datafile')
     parser.add_argument('savedir', action='store')
+    parser.add_argument('--breakearly', action='store_true', default=False, help='Break at 1000 runs')
     parser.add_argument('--start_year', default=2001, action='store', type=int)
     parser.add_argument('--end_year', default=2005, action='store', type=int)
-    parser.add_argument('--threshold', default=10, action='store', type=int)
+    parser.add_argument('--threshold', default=1, action='store', type=int)
     args = parser.parse_args()
     main(args)
     
