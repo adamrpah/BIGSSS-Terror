@@ -7,7 +7,7 @@ from scipy.stats import ks_2samp, binom_test
 max_file_count = 210
 alphas = [0.05, 0.1, 0.15, 0.2, 0.3, 0.5, 0.7, 0.9]
 betas = [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8]
-omegas = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 1]
+omegas = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 fdir = 'abm_runs_v2'
 
 #Original
