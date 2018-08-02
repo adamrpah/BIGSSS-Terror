@@ -24,6 +24,9 @@ fdir = 'abm_runs_v2'
 
 record = []
 
+wfile =  open('../../results/%s_pvalue_analysis_v2_direct.csv' % fdir, 'w')
+print('country,alpha,beta,omega,pvalue', file = wfile)
+
 for country in ['Afghanistan', 'Colombia', 'Iraq']:
     print(country)
     empirical_data = {}
@@ -61,10 +64,5 @@ for country in ['Afghanistan', 'Colombia', 'Iraq']:
                     #Run the binomial test
                     p = binom_test(pass_groups, pass_groups + fail_groups)
                     #keep it
-                    record.append([country, alpha, beta, omega, p])
-#create the dataframe and write it
-with open('../../results/%s_pvalue_analysis_v2.csv' % fdir, 'w') as wfile:
-    print('country,alpha,beta,omega,pvalue', file = wfile)
-    for d in record:
-        print('%s,%.1f,%.1f,%.1f,%f' % (d[0], d[1], d[2], d[3], d[4]), file=wfile )
+                    print('%s,%.1f,%.1f,%.1f,%f' % (country, alpha, beta, omega, p), file = wfile)
                         
