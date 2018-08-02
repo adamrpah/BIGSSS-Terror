@@ -1,0 +1,15 @@
+Source,Target,Weight
+Gunmen,Left-Wing Extremists,0.217823
+Left-Wing Extremists,Rebels,0.030998
+Left-Wing Extremists,Unknown,0.131858
+ELN,Gunmen,0.062967
+ELN,FARC,0.476880
+ERP,Rebels,0.085986
+Rebels,Left-Wing Guerrillas,0.063542
+AUC,ELN,1.115455
+AUC,Rebels,0.049256
+AUC,FARC,2.026551
+AUC,AUC,0.524699
+AUC,Unknown,0.908051
+Unknown,Rebels,0.011369
+Unknown,FARC,0.254001

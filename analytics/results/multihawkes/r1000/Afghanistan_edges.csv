@@ -1,0 +1,6 @@
+Source,Target,Weight
+Al-Qaeda,Hizb-I-Islami,0.215368
+Al-Qaeda,Taliban,0.659742
+Other,Muslims,0.627272
+Taliban,Taliban,0.777850
+Taliban,Unknown,0.005085

@@ -1,0 +1,282 @@
+Source,Target,Weight
+1920 Revolution Brigades,Armed Vanguards of a Second Mohammed Army,0.223441
+1920 Revolution Brigades,Badr Brigades,0.200404
+1920 Revolution Brigades,Brigades of Iman Hassan-al-Basri,0.119104
+1920 Revolution Brigades,Gunmen,0.101586
+1920 Revolution Brigades,Holders of the Black Banners,0.014472
+1920 Revolution Brigades,Imam Hussein Brigade,0.078856
+1920 Revolution Brigades,Individual,0.004577
+1920 Revolution Brigades,al-Iraq,0.004231
+1920 Revolution Brigades,Mujahedeen Corps in Iraq,0.021378
+1920 Revolution Brigades,Mujahedeen Shura Council,0.058685
+1920 Revolution Brigades,SCIRI,0.084266
+AQI,AQI,0.947718
+AQI,Ansar al-Sunna,0.138075
+AQI,al-Iraq,0.011247
+AQI,Other,0.002993
+Abu Hafs al-Masri Brigades,Islamic Movement of Iraqi Mujahidin,0.131570
+Abu Hafs al-Masri Brigades,Junaid Jihadist Battalion,0.122614
+Abu Hafs al-Masri Brigades,Mujahedeen Shura Council,0.001736
+Abu Hafs al-Masri Brigades,Other,0.097371
+Al Zawahiri Loyalists,1920 Revolution Brigades,0.096557
+Al Zawahiri Loyalists,AQI,0.073014
+Al Zawahiri Loyalists,Abu Hafs al-Masri Brigades,0.055852
+Al Zawahiri Loyalists,Al Zawahiri Loyalists,0.013331
+Al Zawahiri Loyalists,Ansar al-Din,0.016927
+Al Zawahiri Loyalists,Ansar al-Islam,0.086100
+Al Zawahiri Loyalists,Ansar al-Jihad,0.099294
+Al Zawahiri Loyalists,Ansar al-Sunna,0.020892
+Al Zawahiri Loyalists,Armed Vanguards of a Second Mohammed Army,0.235333
+Al Zawahiri Loyalists,Badr Brigades,0.042633
+Al Zawahiri Loyalists,Brigades of Iman Hassan-al-Basri,0.003546
+Al Zawahiri Loyalists,Gunmen,0.011876
+Al Zawahiri Loyalists,Holders of the Black Banners,0.040115
+Al Zawahiri Loyalists,Imam Hussein Brigade,0.000680
+Al Zawahiri Loyalists,Individual,0.032852
+Al Zawahiri Loyalists,al-Iraq,0.053229
+Al Zawahiri Loyalists,Islamic Movement of Iraqi Mujahidin,0.011944
+Al Zawahiri Loyalists,Liberals of Galilee,0.011747
+Al Zawahiri Loyalists,Mujahedeen Brigades,0.048821
+Al Zawahiri Loyalists,Exodus,0.004255
+Ansar al-Din,Islamic Jihad Brigades,0.023365
+Ansar al-Din,Khalid ibn Walid Brigade,0.026536
+Ansar al-Din,Mahdi Army,0.036321
+Ansar al-Din,Mujahedeen Army,0.116744
+Ansar al-Din,Protectors of Islam Brigade,0.057083
+Ansar al-Islam,Armed Vanguards of a Second Mohammed Army,0.064668
+Ansar al-Islam,Badr Brigades,0.013022
+Ansar al-Islam,Brigades of Iman Hassan-al-Basri,0.001010
+Ansar al-Islam,Gunmen,0.112829
+Ansar al-Islam,Holders of the Black Banners,0.080077
+Ansar al-Islam,Imam Hussein Brigade,0.029565
+Ansar al-Islam,Individual,0.003232
+Ansar al-Islam,al-Iraq,0.073884
+Ansar al-Islam,Islamic Movement of Iraqi Mujahidin,0.024732
+Ansar al-Islam,Jaish al-Ta'ifa al-Mansura,0.007441
+Ansar al-Islam,Junaid Jihadist Battalion,0.077637
+Ansar al-Islam,Khalid ibn Walid Brigade,0.048734
+Ansar al-Islam,Mujahedeen Shura Council,0.099682
+Ansar al-Jihad,Junaid Jihadist Battalion,0.091182
+Ansar al-Jihad,Liberals of Galilee,0.218124
+Ansar al-Jihad,Mahdi Army,0.042151
+Ansar al-Jihad,Mujahedeen Army,0.092182
+Ansar al-Jihad,Mujahedeen Corps in Iraq,0.015327
+Ansar al-Jihad,SCIRI,0.013190
+Ansar al-Jihad,Unknown,0.047278
+Ansar al-Sunna,Liberals of Galilee,0.023850
+Ansar al-Sunna,Mahdi Army,0.025462
+Ansar al-Sunna,Mujahedeen Group,0.029424
+Ansar al-Sunna,SCIRI,0.049712
+Armed Vanguards of a Second Mohammed Army,Islamic Movement of Iraqi Mujahidin,0.033877
+Armed Vanguards of a Second Mohammed Army,Jaish al-Ta'ifa al-Mansura,0.075720
+Armed Vanguards of a Second Mohammed Army,Khalid ibn Walid Brigade,0.048659
+Armed Vanguards of a Second Mohammed Army,PKK,0.011045
+Armed Vanguards of a Second Mohammed Army,Mujahedeen Brigades,0.068840
+Armed Vanguards of a Second Mohammed Army,Protectors of Islam Brigade,0.037477
+Badr Brigades,Other,0.105788
+Brigades of Iman Hassan-al-Basri,Omar Bin Khattab Group,0.010007
+Brigades of Iman Hassan-al-Basri,Protectors of Islam Brigade,0.047206
+Brigades of Iman Hassan-al-Basri,SCIRI,0.212799
+Gunmen,PKK,0.016109
+Gunmen,Mujahedeen Shura Council,0.040085
+Holders of the Black Banners,Islamic Jihad Brigades,0.002394
+Holders of the Black Banners,PKK,0.056806
+Holders of the Black Banners,Liberals of Galilee,0.023858
+Holders of the Black Banners,Mujahedeen Army,0.002443
+Holders of the Black Banners,Mujahedeen Group,0.053545
+Holders of the Black Banners,Other,0.136520
+Holders of the Black Banners,Unknown,0.085860
+Imam Hussein Brigade,1920 Revolution Brigades,0.062389
+Imam Hussein Brigade,AQI,0.005904
+Imam Hussein Brigade,Abu Hafs al-Masri Brigades,0.003805
+Imam Hussein Brigade,Al Zawahiri Loyalists,0.110490
+Imam Hussein Brigade,Ansar al-Din,0.005002
+Imam Hussein Brigade,Ansar al-Islam,0.137579
+Imam Hussein Brigade,Ansar al-Jihad,0.002503
+Imam Hussein Brigade,Ansar al-Sunna,0.104617
+Imam Hussein Brigade,Mujahedeen Army,0.108434
+Imam Hussein Brigade,Mujahedeen Brigades,0.018744
+Individual,1920 Revolution Brigades,0.050665
+Individual,AQI,0.035357
+Individual,Abu Hafs al-Masri Brigades,0.003661
+Individual,Al Zawahiri Loyalists,0.060310
+Individual,Ansar al-Din,0.021492
+Individual,Ansar al-Islam,0.016568
+Individual,Ansar al-Jihad,0.176717
+Individual,Ansar al-Sunna,0.119013
+Individual,Armed Vanguards of a Second Mohammed Army,0.032721
+Individual,Badr Brigades,0.036421
+Individual,Brigades of Iman Hassan-al-Basri,0.049030
+Individual,Gunmen,0.053556
+Individual,Holders of the Black Banners,0.013533
+Individual,Imam Hussein Brigade,0.060068
+Individual,Individual,0.045581
+Individual,al-Iraq,0.032285
+Individual,Islamic Movement of Iraqi Mujahidin,0.030055
+Individual,PKK,0.003483
+Individual,Liberals of Galilee,0.000440
+Individual,Other,0.001296
+Individual,Unknown,0.008926
+al-Iraq,Islamic Movement of Iraqi Mujahidin,0.001186
+al-Iraq,Khalid ibn Walid Brigade,0.077401
+al-Iraq,Mujahedeen Group,0.017609
+al-Iraq,Mujahedeen Shura Council,0.027025
+al-Iraq,Omar Bin Khattab Group,0.026696
+al-Iraq,Other,0.183264
+Islamic Jihad Brigades,1920 Revolution Brigades,0.023145
+Islamic Jihad Brigades,AQI,0.153139
+Islamic Jihad Brigades,Al Zawahiri Loyalists,0.009199
+Islamic Jihad Brigades,Ansar al-Din,0.131256
+Islamic Jihad Brigades,Ansar al-Islam,0.060373
+Islamic Jihad Brigades,Ansar al-Jihad,0.030703
+Islamic Jihad Brigades,Ansar al-Sunna,0.010543
+Islamic Jihad Brigades,Islamic Jihad Brigades,0.040888
+Islamic Jihad Brigades,Junaid Jihadist Battalion,0.133860
+Islamic Jihad Brigades,Protectors of Islam Brigade,0.009027
+Islamic Jihad Brigades,Exodus,0.087585
+Islamic Movement of Iraqi Mujahidin,Junaid Jihadist Battalion,0.027465
+Islamic Movement of Iraqi Mujahidin,PKK,0.072882
+Islamic Movement of Iraqi Mujahidin,Liberals of Galilee,0.091364
+Islamic Movement of Iraqi Mujahidin,Mujahedeen Army,0.168783
+Islamic Movement of Iraqi Mujahidin,Protectors of Islam Brigade,0.026927
+Jaish al-Ta'ifa al-Mansura,Islamic Jihad Brigades,0.015374
+Jaish al-Ta'ifa al-Mansura,Islamic Movement of Iraqi Mujahidin,0.031588
+Jaish al-Ta'ifa al-Mansura,Junaid Jihadist Battalion,0.157751
+Jaish al-Ta'ifa al-Mansura,Protectors of Islam Brigade,0.007136
+Junaid Jihadist Battalion,Armed Vanguards of a Second Mohammed Army,0.071561
+Junaid Jihadist Battalion,Badr Brigades,0.165942
+Junaid Jihadist Battalion,Brigades of Iman Hassan-al-Basri,0.000620
+Junaid Jihadist Battalion,Gunmen,0.008924
+Junaid Jihadist Battalion,Holders of the Black Banners,0.030409
+Junaid Jihadist Battalion,Imam Hussein Brigade,0.055782
+Junaid Jihadist Battalion,Individual,0.072385
+Junaid Jihadist Battalion,al-Iraq,0.004248
+Junaid Jihadist Battalion,Jaish al-Ta'ifa al-Mansura,0.120401
+Junaid Jihadist Battalion,Mujahedeen Group,0.005794
+Khalid ibn Walid Brigade,Khalid ibn Walid Brigade,0.019873
+Khalid ibn Walid Brigade,Mujahedeen Group,0.027978
+PKK,Islamic Movement of Iraqi Mujahidin,0.133179
+PKK,Khalid ibn Walid Brigade,0.105328
+PKK,Other,0.004470
+PKK,Exodus,0.076612
+Liberals of Galilee,Armed Vanguards of a Second Mohammed Army,0.103601
+Liberals of Galilee,Badr Brigades,0.028032
+Liberals of Galilee,Brigades of Iman Hassan-al-Basri,0.010073
+Liberals of Galilee,Gunmen,0.022597
+Liberals of Galilee,Holders of the Black Banners,0.006595
+Liberals of Galilee,Imam Hussein Brigade,0.005218
+Liberals of Galilee,Individual,0.172664
+Liberals of Galilee,al-Iraq,0.019489
+Liberals of Galilee,Jaish al-Ta'ifa al-Mansura,0.076487
+Liberals of Galilee,Mahdi Army,0.027684
+Liberals of Galilee,Omar Bin Khattab Group,0.108577
+Liberals of Galilee,Other,0.040617
+Mahdi Army,1920 Revolution Brigades,0.004855
+Mahdi Army,AQI,0.012251
+Mahdi Army,Abu Hafs al-Masri Brigades,0.001331
+Mahdi Army,Al Zawahiri Loyalists,0.003197
+Mahdi Army,Ansar al-Din,0.081092
+Mahdi Army,Ansar al-Islam,0.051732
+Mahdi Army,Ansar al-Jihad,0.009621
+Mahdi Army,Ansar al-Sunna,0.040653
+Mahdi Army,Badr Brigades,0.042966
+Mahdi Army,Brigades of Iman Hassan-al-Basri,0.070892
+Mahdi Army,Gunmen,0.015816
+Mahdi Army,Imam Hussein Brigade,0.031254
+Mahdi Army,Individual,0.011029
+Mahdi Army,al-Iraq,0.057451
+Mahdi Army,Protectors of Islam Brigade,0.040770
+Mahdi Army,SCIRI,0.106597
+Mahdi Army,Exodus,0.077710
+Mujahedeen Army,Armed Vanguards of a Second Mohammed Army,0.031938
+Mujahedeen Army,Badr Brigades,0.040712
+Mujahedeen Army,Brigades of Iman Hassan-al-Basri,0.016879
+Mujahedeen Army,Gunmen,0.070746
+Mujahedeen Army,Holders of the Black Banners,0.033582
+Mujahedeen Army,Imam Hussein Brigade,0.053428
+Mujahedeen Army,Individual,0.000709
+Mujahedeen Army,al-Iraq,0.011663
+Mujahedeen Army,Islamic Movement of Iraqi Mujahidin,0.087960
+Mujahedeen Army,Jaish al-Ta'ifa al-Mansura,0.031656
+Mujahedeen Army,Liberals of Galilee,0.053021
+Mujahedeen Army,Mahdi Army,0.008669
+Mujahedeen Army,Mujahedeen Brigades,0.039542
+Mujahedeen Army,Mujahedeen Corps in Iraq,0.010353
+Mujahedeen Army,Protectors of Islam Brigade,0.086578
+Mujahedeen Army,Unknown,0.007214
+Mujahedeen Brigades,Mujahedeen Army,0.195524
+Mujahedeen Brigades,Mujahedeen Shura Council,0.020524
+Mujahedeen Brigades,SCIRI,0.030992
+Mujahedeen Brigades,Exodus,0.029770
+Mujahedeen Corps in Iraq,Islamic Jihad Brigades,0.107061
+Mujahedeen Corps in Iraq,Islamic Movement of Iraqi Mujahidin,0.076731
+Mujahedeen Corps in Iraq,Jaish al-Ta'ifa al-Mansura,0.036917
+Mujahedeen Corps in Iraq,Junaid Jihadist Battalion,0.035576
+Mujahedeen Corps in Iraq,Khalid ibn Walid Brigade,0.080736
+Mujahedeen Corps in Iraq,Liberals of Galilee,0.021244
+Mujahedeen Corps in Iraq,Mujahedeen Corps in Iraq,0.020567
+Mujahedeen Corps in Iraq,Mujahedeen Shura Council,0.029772
+Mujahedeen Corps in Iraq,Protectors of Islam Brigade,0.019146
+Mujahedeen Group,PKK,0.222841
+Mujahedeen Group,Other,0.032033
+Mujahedeen Group,Unknown,0.015294
+Mujahedeen Shura Council,1920 Revolution Brigades,0.034829
+Mujahedeen Shura Council,AQI,0.215506
+Mujahedeen Shura Council,Abu Hafs al-Masri Brigades,0.042108
+Mujahedeen Shura Council,Al Zawahiri Loyalists,0.031894
+Mujahedeen Shura Council,Ansar al-Din,0.001902
+Mujahedeen Shura Council,Ansar al-Islam,0.010670
+Mujahedeen Shura Council,Ansar al-Jihad,0.004275
+Mujahedeen Shura Council,Ansar al-Sunna,0.035945
+Mujahedeen Shura Council,Mahdi Army,0.064630
+Mujahedeen Shura Council,Unknown,0.125682
+Omar Bin Khattab Group,1920 Revolution Brigades,0.030179
+Omar Bin Khattab Group,AQI,0.111195
+Omar Bin Khattab Group,Abu Hafs al-Masri Brigades,0.066825
+Omar Bin Khattab Group,Al Zawahiri Loyalists,0.014743
+Omar Bin Khattab Group,Ansar al-Din,0.013325
+Omar Bin Khattab Group,Ansar al-Islam,0.081590
+Omar Bin Khattab Group,Ansar al-Jihad,0.001612
+Omar Bin Khattab Group,Ansar al-Sunna,0.207498
+Omar Bin Khattab Group,Mahdi Army,0.029091
+Omar Bin Khattab Group,Mujahedeen Group,0.058393
+Omar Bin Khattab Group,Omar Bin Khattab Group,0.011243
+Omar Bin Khattab Group,Other,0.016586
+Omar Bin Khattab Group,SCIRI,0.044489
+Omar Bin Khattab Group,Exodus,0.030267
+Other,Islamic Jihad Brigades,0.078290
+Other,Junaid Jihadist Battalion,0.031467
+Other,Mujahedeen Shura Council,0.004751
+Other,SCIRI,0.014219
+Protectors of Islam Brigade,Armed Vanguards of a Second Mohammed Army,0.049726
+Protectors of Islam Brigade,Badr Brigades,0.048732
+Protectors of Islam Brigade,Brigades of Iman Hassan-al-Basri,0.051749
+Protectors of Islam Brigade,Gunmen,0.022011
+Protectors of Islam Brigade,Holders of the Black Banners,0.083467
+Protectors of Islam Brigade,Imam Hussein Brigade,0.001194
+Protectors of Islam Brigade,Individual,0.026343
+Protectors of Islam Brigade,al-Iraq,0.044175
+Protectors of Islam Brigade,Islamic Jihad Brigades,0.043918
+Protectors of Islam Brigade,Junaid Jihadist Battalion,0.038345
+Protectors of Islam Brigade,Liberals of Galilee,0.197450
+Protectors of Islam Brigade,Mujahedeen Shura Council,0.005458
+Protectors of Islam Brigade,Omar Bin Khattab Group,0.065901
+SCIRI,Islamic Jihad Brigades,0.104359
+SCIRI,Islamic Movement of Iraqi Mujahidin,0.111283
+SCIRI,Khalid ibn Walid Brigade,0.108923
+SCIRI,PKK,0.094379
+SCIRI,Mujahedeen Group,0.095442
+SCIRI,Omar Bin Khattab Group,0.087074
+SCIRI,Other,0.089193
+Exodus,1920 Revolution Brigades,0.004264
+Exodus,AQI,0.056404
+Exodus,Abu Hafs al-Masri Brigades,0.029538
+Exodus,Al Zawahiri Loyalists,0.017385
+Exodus,Ansar al-Din,0.028207
+Exodus,Ansar al-Islam,0.003384
+Exodus,Ansar al-Jihad,0.031655
+Exodus,Ansar al-Sunna,0.066779
+Exodus,Liberals of Galilee,0.002550
+Exodus,Omar Bin Khattab Group,0.017626
+Exodus,Unknown,0.023722
+Unknown,Unknown,0.952084
