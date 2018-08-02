@@ -27,20 +27,20 @@ for country in ['Afghanistan', 'Colombia', 'Iraq']:
             for omega in omegas:
                 group_pvalues = {g:[] for g in empirical_data.keys() if len(empirical_data[g])>1}
                 #Read through all the parameter files
-                for parameter_file in glob.glob('../../results/abm_runs/%s_%.1f_%.1f_%s_*.csv' % (country, alpha, beta, str(omega))):
-                    #Run dataframe is 
-                    run_df = pd.read_csv(parameter_file, header=None, names=['group', 'tick', 'attack'])
-                    for group, gdf in run_df.groupby('group'):
-                        if group in group_pvalues:
-                            timeset = []
-                            for tick, attack in gdf.loc[:, ['tick', 'attack']].values:
-                                for i in range(attack):
-                                    timeset.append(tick)
-                            sim_interevent = np.diff(timeset)
-                            D, p = ks_2samp(sim_interevent, empirical_data[group])
-                            group_pvalues[group].append(p)
-                #Protect against a deadfile
-                if len([v for v in group_pvalues.items() if v==[]]) != len(group_pvalues.keys()):
+                if len(flist) > 0:
+                    flist = glob.glob('../../results/abm_runs/%s_%.1f_%.1f_%s_*.csv' % (country, alpha, beta, str(omega)))
+                    for parameter_file in flist:
+                        #Run dataframe is 
+                        run_df = pd.read_csv(parameter_file, header=None, names=['group', 'tick', 'attack'])
+                        for group, gdf in run_df.groupby('group'):
+                            if group in group_pvalues:
+                                timeset = []
+                                for tick, attack in gdf.loc[:, ['tick', 'attack']].values:
+                                    for i in range(attack):
+                                        timeset.append(tick)
+                                sim_interevent = np.diff(timeset)
+                                D, p = ks_2samp(sim_interevent, empirical_data[group])
+                                group_pvalues[group].append(p)
                     #Do the pass fail
                     pass_groups, fail_groups = 0, 0
                     for group, pval_list in group_pvalues.items():
