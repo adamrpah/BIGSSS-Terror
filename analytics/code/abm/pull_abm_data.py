@@ -3,10 +3,18 @@ import numpy as np
 import glob
 from scipy.stats import ks_2samp, binom_test
 
-max_file_count = 1000
-alphas = np.arange(0.5, 1.4, 0.1)
-betas = np.arange(5, 10.5, 0.5)
-omegas = [0, 0.1, 1]
+#runv2
+max_file_count = 210
+alphas = [0.05 0.1 0.15 0.2 0.3 0.5 0.7 0.9]
+betas = [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8]
+omegas = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 1]
+
+#Original
+#max_file_count = 1000
+#alphas = np.arange(0.5, 1.4, 0.1)
+#betas = np.arange(5, 10.5, 0.5)
+#omegas = [0, 0.1, 1]
+
 #Testing
 #alphas = [0.5]
 #betas = [5.5]
@@ -27,8 +35,8 @@ for country in ['Afghanistan', 'Colombia', 'Iraq']:
             for omega in omegas:
                 group_pvalues = {g:[] for g in empirical_data.keys() if len(empirical_data[g])>1}
                 #Read through all the parameter files
+                flist = glob.glob('../../results/abm_runs_v2/%s_%s_%s_%s_*.csv' % (country, str(alpha), str(beta), str(omega)))
                 if len(flist) > 0:
-                    flist = glob.glob('../../results/abm_runs/%s_%.1f_%.1f_%s_*.csv' % (country, alpha, beta, str(omega)))
                     for parameter_file in flist:
                         #Run dataframe is 
                         run_df = pd.read_csv(parameter_file, header=None, names=['group', 'tick', 'attack'])
@@ -54,7 +62,7 @@ for country in ['Afghanistan', 'Colombia', 'Iraq']:
                     #keep it
                     record.append([country, alpha, beta, omega, p])
 #create the dataframe and write it
-with open('../../results/abm_pvalue_analysis.csv', 'w') as wfile:
+with open('../../results/abm_pvalue_analysis_v2.csv', 'w') as wfile:
     print('country,alpha,beta,omega,pvalue', file = wfile)
     for d in record:
         print('%s,%.1f,%.1f,%.1f,%f' % (d[0], d[1], d[2], d[3], d[4]), file=wfile )
