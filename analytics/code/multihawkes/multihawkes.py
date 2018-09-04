@@ -77,7 +77,7 @@ def main(args):
     hawkes_model.add_data( np.array(date_ordinals.values.tolist()) )
     #Set-up the runs
     tolpass = False
-    i = 0
+    loopcount = 0
     lps_runs = list( range(0, 100, 10) )
     parameter_trace = {g:[] for g in gnames}
     while tolpass == False:
@@ -88,11 +88,12 @@ def main(args):
         for i,group in enumerate(gnames):
             parameter_trace[group].append(hawkes_model.lambda0[i])
         #increment
-        i += 1
+        print(loopcount)
+        loopcount += 1
         #Start checking
-        if i > 1000:
-            tolpass = tol_checker(parameter_trace)
-        if i>1000 and args.breakearly == True:
+        #if i > 1000:
+        #    tolpass = tol_checker(parameter_trace)
+        if loopcount>1000 and args.breakearly == True:
             break
     #Pull the data
     dataset = {}
@@ -105,8 +106,8 @@ def main(args):
         }
     json.dump(dataset, open('%s/%s_multihawkes.json' % (args.savedir, country), 'w'), indent=4)
     #Plot it
-    hawkes_model.plot(color="#e41a1c")
-    plt.savefig('%s/%s_multihawkes.eps' % (args.savedir, country))
+    #hawkes_model.plot(color="#e41a1c")
+    #plt.savefig('%s/%s_multihawkes.eps' % (args.savedir, country))
 
 
 if __name__ == '__main__':
