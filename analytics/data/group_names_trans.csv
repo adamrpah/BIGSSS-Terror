@@ -1,0 +1,44 @@
+,gname,country_txt,lognkill,eventid,attack_types,weapon_types,mu,AbmGTDname,PandasName
+0,1920 Revolution Brigades,Iraq,2.1383330595080277,2,1,1,0.003728574858277349,1920 Revolution Brigades,1920RevolutionBrigades
+1,AQI,Iraq,1.8267396958828932,120,6,5,0.022371449149664095,AQI,AQI
+2,Abu Hafs al-Masri Brigades,Iraq,2.0794415416798357,1,1,1,0.003728574858277349,Abu Hafs al-Masri Brigades,AbuHafsalMasriBrigades
+3,Al Zawahiri Loyalists,Iraq,0.0,1,1,1,0.003728574858277349,Al Zawahiri Loyalists,AlZawahiriLoyalists
+4,Al-Qaeda,Afghanistan,0.9732334685105425,19,3,2,0.011185724574832048,Al-Qaeda,AlQaeda
+5,Ansar al-Din,Iraq,0.0,1,1,1,0.003728574858277349,Ansar al-Din,AnsaralDin
+6,Ansar al-Islam,Iraq,2.1912294229394726,7,2,2,0.007457149716554698,Ansar al-Islam,AnsaralIslam
+7,Ansar al-Jihad,Iraq,0.0,1,1,1,0.003728574858277349,Ansar al-Jihad,AnsaralJihad
+8,Ansar al-Sunna,Iraq,1.8224059111237425,16,4,5,0.014914299433109396,Ansar al-Sunna,AnsaralSunna
+9,Armed Vanguards of a Second Mohammed Army,Iraq,3.2188758248682006,1,1,1,0.003728574858277349,Armed Vanguards of a Second Mohammed Army,ArmedVanguardsofaSecondMohammedArmy
+10,Badr Brigades,Iraq,1.0986122886681098,1,2,1,0.007457149716554698,Badr Brigades,BadrBrigades
+11,Brigades of Iman Hassan-al-Basri,Iraq,1.3862943611198906,1,1,1,0.003728574858277349,Brigades of Iman Hassan-al-Basri,BrigadesofImanHassanalBasri
+12,Hizb-I-Islami,Afghanistan,0.23104906018664842,6,2,2,0.007457149716554698,Hizb-I-Islami,HizbIIslami
+13,Holders of the Black Banners,Iraq,0.0,1,2,1,0.007457149716554698,Holders of the Black Banners,HoldersoftheBlackBanners
+14,Imam Hussein Brigade,Iraq,0.8958797346140275,2,2,2,0.007457149716554698,Imam Hussein Brigade,ImamHusseinBrigade
+15,Islamic Army in Iraq (al-Jaish al-Islami fi al-Iraq),Iraq,1.141087047866959,4,4,3,0.014914299433109396,Islamic Army in Iraq (al-Jaish al-Islami fi al-Iraq),IslamicArmyinIraqalJaishalIslamifialIraq
+16,Islamic Jihad Brigades,Iraq,0.0,1,1,1,0.003728574858277349,Islamic Jihad Brigades,IslamicJihadBrigades
+17,Islamic Movement of Iraqi Mujahidin,Iraq,0.6931471805599453,1,1,1,0.003728574858277349,Islamic Movement of Iraqi Mujahidin,IslamicMovementofIraqiMujahidin
+18,Islamist Extremists,Afghanistan,1.3862943611198906,1,1,1,0.003728574858277349,Islamist Extremists,IslamistExtremists
+19,Jaish al-Ta'ifa al-Mansura,Iraq,1.0397207708399179,2,2,2,0.007457149716554698,Jaish al-Ta'ifa al-Mansura,JaishalTaifaalMansura
+20,Jaysh al-Muslimin (Army of the Muslims),Afghanistan,0.0,2,2,2,0.007457149716554698,Jaysh al-Muslimin (Army of the Muslims),JayshalMusliminArmyoftheMuslims
+21,Junaid Jihadist Battalion,Iraq,0.0,1,1,1,0.003728574858277349,Junaid Jihadist Battalion,JunaidJihadistBattalion
+22,Khalid ibn Walid Brigade,Iraq,0.0,1,1,1,0.003728574858277349,Khalid ibn Walid Brigade,KhalidibnWalidBrigade
+23,Liberals of Galilee,Iraq,0.0,1,1,1,0.003728574858277349,Liberals of Galilee,LiberalsofGalilee
+24,Mahdi Army,Iraq,0.0,3,1,4,0.003728574858277349,Mahdi Army,MahdiArmy
+25,Mujahedeen Army,Iraq,0.0,1,1,1,0.003728574858277349,Mujahedeen Army,MujahedeenArmy
+26,Mujahedeen Brigades,Iraq,0.0,1,1,2,0.003728574858277349,Mujahedeen Brigades,MujahedeenBrigades
+27,Mujahedeen Corps in Iraq,Iraq,0.0,1,1,2,0.003728574858277349,Mujahedeen Corps in Iraq,MujahedeenCorpsinIraq
+28,Mujahedeen Group,Iraq,2.1972245773362196,1,2,3,0.007457149716554698,Mujahedeen Group,MujahedeenGroup
+29,Mujahedeen Shura Council,Iraq,0.0,2,2,3,0.007457149716554698,Mujahedeen Shura Council,MujahedeenShuraCouncil
+30,National Liberation Army of Colombia (ELN),Colombia,0.22430586304271374,87,6,4,0.022371449149664095,National Liberation Army of Colombia (ELN),NationalLiberationArmyofColombiaELN
+31,Omar Bin Khattab Group,Iraq,0.0,1,1,1,0.003728574858277349,Omar Bin Khattab Group,OmarBinKhattabGroup
+32,Opposition Group,Afghanistan,0.0,5,1,1,0.003728574858277349,Opposition Group,OppositionGroup
+33,People's Revolutionary Army (ERP),Colombia,0.07701635339554948,9,2,2,0.007457149716554698,People's Revolutionary Army (ERP),PeoplesRevolutionaryArmyERP
+34,Popular Liberation Army (EPL),Colombia,0.8317766166719343,5,4,3,0.014914299433109396,Popular Liberation Army (EPL),PopularLiberationArmyEPL
+35,Protectors of Islam Brigade,Iraq,0.0,1,1,1,0.003728574858277349,Protectors of Islam Brigade,ProtectorsofIslamBrigade
+36,Revolutionary Armed Forces of Colombia (FARC),Colombia,0.7666728947540344,276,8,8,0.029828598866218792,Revolutionary Armed Forces of Colombia (FARC),RevolutionaryArmedForcesofColombiaFARC
+37,Saif-ul-Muslimeen,Afghanistan,0.0,1,1,1,0.003728574858277349,Saif-ul-Muslimeen,SaifulMuslimeen
+38,Supreme Council for Islamic Revolution in Iraq (SCIRI),Iraq,0.0,3,2,2,0.007457149716554698,Supreme Council for Islamic Revolution in Iraq (SCIRI),SupremeCouncilforIslamicRevolutioninIraqSCIRI
+39,Takfir wal-Hijra (Excommunication and Exodus),Iraq,2.5649493574615367,1,1,1,0.003728574858277349,Takfir wal-Hijra (Excommunication and Exodus),TakfirwalHijraExcommunicationandExodus
+40,Taliban,Afghanistan,0.9060150590657702,235,6,5,0.022371449149664095,Taliban,Taliban
+41,Tela Mohammed,Afghanistan,0.0,1,1,1,0.003728574858277349,Tela Mohammed,TelaMohammed
+42,United Self Defense Units of Colombia (AUC),Colombia,1.5912137034975982,51,6,5,0.022371449149664095,United Self Defense Units of Colombia (AUC),UnitedSelfDefenseUnitsofColombiaAUC
