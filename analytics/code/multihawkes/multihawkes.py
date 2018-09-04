@@ -23,12 +23,12 @@ from support import loaders
 
 #Global directories and variables
 
-def tol_checker(ptraces, tol=0.01):
+def tol_checker(ptraces, tol=0.1):
     tolpass = None
     tolcheck = []
     for trace in ptraces.values():
-        mean_trace = np.mean(trace)
-        if np.mean([(trace_value-mean_trace)/mean_trace for trace_value in trace]) < tol:
+        mean_trace = np.mean(trace)[-100:]
+        if np.mean([(trace_value-mean_trace)/mean_trace for trace_value in trace[-100:]]) < tol:
             tolcheck.append(1)
         else:
             tolcheck.append(0)
@@ -92,8 +92,8 @@ def main(args):
         #Start checking
         if i > 1000:
             tolpass = tol_checker(parameter_trace)
-            if args.breakearly == True:
-                break
+        if i>1000 and args.breakearly == True:
+            break
     #Pull the data
     dataset = {}
     header = ['gname', 'A', 'B', 'W_effective', 'lambda0']
