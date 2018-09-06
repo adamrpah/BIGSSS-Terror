@@ -23,20 +23,55 @@ from support import loaders
 
 #Global directories and variables
 
-def tol_checker(ptraces, tol=0.1):
-    tolpass = None
-    tolcheck = []
-    for trace in ptraces.values():
-        mean_trace = np.mean(trace[-100:])
-        if np.mean([(trace_value-mean_trace)/mean_trace for trace_value in trace[-100:]]) < tol:
-            tolcheck.append(1)
-        else:
-            tolcheck.append(0)
-    if np.mean(tolcheck) == 1:
-        tolpass=True
-    else:
-        tolpass=False
-    return tolpass
+def calcB(tstats, gnames, n):
+    '''
+    Calculates the between chain variance
+    calc B is n/m-1*sum(variance_chain_i - avg_varaicne_chains)
+    returns it for each variable
+
+    Need to do this for each group
+    '''
+    resultB = {}
+    #Iterate through each group
+    for gname in gnames:
+        #Average variance across the chains 
+        avgVar = np.mean( [tstats[ichain][gname]['std']**2 for ichain in range(n) ] )
+        #B calculation
+        B = n/(n-1) * sum( [(tstats[ichain][gname]['std'] - avgVar)**2 for ichain in range(n)] )
+        #Store it
+        resultB[gname] = B
+    return resultB
+
+def calcW(tstats, gnames):
+    '''
+    Calculates the within chain variance
+    1/(m) sum( variance_i )^2
+    returns it for each variable
+    '''
+    resultW = {}
+    #Iterate thorugh each group
+    for gname in gnames:
+        #Sum the chain variances
+        sumVariances = sum( [tstats[ichain][gname]['std']**2 for ichian in range(n)] ) 
+        #Caluclate w and store it
+        W = sumVariances / n
+        resultW[gname] = W
+    return resultW
+
+def calcVar(W, B, n):
+    resultVar = {}
+    #iterate through the groups
+    for gname in W.keys():
+        Var = (1 - 1/n)*W[gname] + 1/n * B[gname]
+        resultVar[gname] = Var
+    return resultVar
+
+def calcR(Var, W):
+    resultR = {}
+    for gname in W.keys():
+        R = np.sqrt(Var[gname]/W[gname])
+        resultR[gname] = R
+    return resultR
 
 def main(args):
     try:
@@ -76,26 +111,48 @@ def main(args):
     hawkes_model = DiscreteTimeNetworkHawkesModelSpikeAndSlab(K=K, dt_max=dt_max, network_hypers=network_hypers) 
     hawkes_model.add_data( np.array(date_ordinals.values.tolist()) )
     #Set-up the runs
-    tolpass = False
+    srfpass = False
     loopcount = 0
-    lps_runs = list( range(0, 100, 10) )
-    parameter_trace = {g:[] for g in gnames}
-    while tolpass == False:
-        hawkes_model.resample_model()
-        #record the log probability
-        lps_runs.append(hawkes_model.log_probability())
-        #Record the parameters
-        for i,group in enumerate(gnames):
-            parameter_trace[group].append(hawkes_model.lambda0[i])
+    #set-up the model
+    hawkes_models = {}
+    for ichain in range(args.num_chains):
+        hawkes_models[ichain] = DiscreteTimeNetworkHawkesModelSpikeAndSlab(K=K, dt_max=dt_max, network_hypers=network_hypers) 
+        hawkes_models[ichain].add_data( np.array(date_ordinals.values.tolist()) )
+    #hold variables
+    parameter_trace = {ichain:{g:[] for g in gnames} for ichain in range(args.num_chains)}
+    trace_stats = {ichain:{g:{'mean':0, 'std':0} for g in gnames} for ichain in range(args.num_chains)}
+    while srfpass == False:
+        #resample all chains
+        for ichain in range(args.num_chains):
+            hawkes_models[ichain].resample_model()
+            #Record the parameters
+            for i,group in enumerate(gnames):
+                parameter_trace[ichain][group].append(hawkes_model.lambda0[i])
+                #Calculate the stats
+                trace_stats[ichain][group]['mean'] = np.mean(parameter_trace[ichain][group][args.burn::args.thin])
+                trace_stats[ichain][group]['std'] = np.std(parameter_trace[ichain][group][args.burn::args.thin])
         #increment
         print(loopcount)
         loopcount += 1
         #Start checking
         if loopcount > 1000:
-            tolpass = tol_checker(parameter_trace)
-        #break early
-        if loopcount>1000 and args.breakearly == True:
-            break
+            #Calculate out the parts
+            B = calcB(trace_stats, gnames, args.num_chains)
+            W = calcW(trace_stats, gnames)
+            VarSig = calcVar(W, B, args.num_chains)
+            R = calcR(VarSig, W)
+            #SRF pass check
+            srf_pass_set = []
+            for param, srf_val in R.items():
+                if abs(srf_val-1.0) < args.tol:
+                    srf_pass_set.append(1)
+            if np.mean(srf_pass_set) == 1:
+                srfpass = True
+    #Write out the SRFs
+    with open('%s/%s_srf.csv' % (args.savedir, country), 'w') as wfile:
+        print('group,B,W,V,R', file = wfile)
+        for gname in B.keys():
+            print('%s,%f,%f,%f,%f' % (gname, B[gname], W[gname], VarSig[gname], R[gname]), file=wfile)
     #Pull the data
     dataset = {}
     header = ['gname', 'A', 'B', 'W_effective', 'lambda0']
@@ -106,19 +163,19 @@ def main(args):
             'lambda': float(hawkes_model.lambda0[i])
         }
     json.dump(dataset, open('%s/%s_multihawkes.json' % (args.savedir, country), 'w'), indent=4)
-    #Plot it
-    #hawkes_model.plot(color="#e41a1c")
-    #plt.savefig('%s/%s_multihawkes.eps' % (args.savedir, country))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="")
     parser.add_argument('datafile', action='store', help='Country csv datafile')
     parser.add_argument('savedir', action='store')
-    parser.add_argument('--breakearly', action='store_true', default=False, help='Break at 1000 runs')
     parser.add_argument('--start_year', default=2001, action='store', type=int)
     parser.add_argument('--end_year', default=2005, action='store', type=int)
     parser.add_argument('--threshold', default=1, action='store', type=int)
+    parser.add_argument('--num_chains', default = 8, action='store', type=int)
+    parser.add_argument('--burn', default = 500, action='store', type=int)
+    parser.add_argument('--thin', default = 5, action='store', type=int)
+    parser.add_argument('--tol', default = 0.0001, action='store', type=int)
     args = parser.parse_args()
     main(args)
     
