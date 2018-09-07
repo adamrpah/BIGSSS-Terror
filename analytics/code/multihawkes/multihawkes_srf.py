@@ -42,7 +42,7 @@ def calcB(tstats, gnames, n):
         resultB[gname] = B
     return resultB
 
-def calcW(tstats, gnames):
+def calcW(tstats, gnames, n):
     '''
     Calculates the within chain variance
     1/(m) sum( variance_i )^2
@@ -52,7 +52,7 @@ def calcW(tstats, gnames):
     #Iterate thorugh each group
     for gname in gnames:
         #Sum the chain variances
-        sumVariances = sum( [tstats[ichain][gname]['std']**2 for ichian in range(n)] ) 
+        sumVariances = sum( [tstats[ichain][gname]['std']**2 for ichain in range(n)] ) 
         #Caluclate w and store it
         W = sumVariances / n
         resultW[gname] = W
@@ -138,7 +138,7 @@ def main(args):
         if loopcount > 1000:
             #Calculate out the parts
             B = calcB(trace_stats, gnames, args.num_chains)
-            W = calcW(trace_stats, gnames)
+            W = calcW(trace_stats, gnames, args.num_chains)
             VarSig = calcVar(W, B, args.num_chains)
             R = calcR(VarSig, W)
             #SRF pass check
