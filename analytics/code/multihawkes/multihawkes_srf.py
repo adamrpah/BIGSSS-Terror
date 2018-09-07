@@ -135,7 +135,7 @@ def main(args):
         print(loopcount)
         loopcount += 1
         #Start checking
-        if loopcount > 1000:
+        if loopcount > 1000 and loopcount % args.thin == 0:
             #Calculate out the parts
             B = calcB(trace_stats, gnames, args.num_chains)
             W = calcW(trace_stats, gnames, args.num_chains)
