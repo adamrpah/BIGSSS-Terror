@@ -102,13 +102,13 @@ to generate-attacks ; group command
   ]
 end
 
-to write-results
-  let country input-folder ; we use the name of the input folder as the country name
-  let filename (word "outputs/" output-folder "/" country "_"
-    alpha "_" beta "_" omega "_" behaviorspace-run-number ".csv")
-  csv:to-file filename reduce sentence [
-    map [ pair -> fput name pair ] table:to-list table:counts attacks
-  ] of groups
+to-report attacks-csv
+  report csv:to-string (
+    fput ["group" "step" "num_attacks"]
+    reduce sentence [
+      map [ pair -> fput name pair ] table:to-list table:counts attacks
+    ] of groups
+  )
 end
 
 to-report too-many-attacks?
@@ -239,17 +239,6 @@ omega
 1
 NIL
 HORIZONTAL
-
-INPUTBOX
-25
-265
-245
-325
-output-folder
-20180731
-1
-0
-String
 
 BUTTON
 180
@@ -658,14 +647,13 @@ NetLogo 6.0.4
 @#$#@#$#@
 @#$#@#$#@
 <experiments>
-  <experiment name="experiment" repetitions="500" sequentialRunOrder="false" runMetricsEveryStep="false">
+  <experiment name="experiment" repetitions="1" sequentialRunOrder="false" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
-    <final>if not too-many-attacks? [
-  write-results
-]</final>
     <timeLimit steps="1826"/>
     <exitCondition>too-many-attacks?</exitCondition>
+    <metric>too-many-attacks?</metric>
+    <metric>attacks-csv</metric>
     <enumeratedValueSet variable="input-folder">
       <value value="&quot;Iraq&quot;"/>
       <value value="&quot;Afghanistan&quot;"/>
@@ -682,9 +670,6 @@ NetLogo 6.0.4
       <value value="0.9"/>
     </enumeratedValueSet>
     <steppedValueSet variable="beta" first="4" step="0.5" last="8"/>
-    <enumeratedValueSet variable="output-folder">
-      <value value="&quot;20180731&quot;"/>
-    </enumeratedValueSet>
     <steppedValueSet variable="omega" first="0" step="0.1" last="1"/>
     <enumeratedValueSet variable="update-plots?">
       <value value="false"/>
