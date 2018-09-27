@@ -23,7 +23,7 @@ from support import loaders
 
 #Global directories and variables
 
-def tol_checker(ptraces, tol=0.1):
+def tol_checker(ptraces, tol=0.01):
     tolpass = None
     tolcheck = []
     for trace in ptraces.values():
