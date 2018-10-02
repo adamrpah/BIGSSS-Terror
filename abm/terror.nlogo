@@ -647,7 +647,7 @@ NetLogo 6.0.4
 @#$#@#$#@
 @#$#@#$#@
 <experiments>
-  <experiment name="experiment" repetitions="1" sequentialRunOrder="false" runMetricsEveryStep="false">
+  <experiment name="experiment" repetitions="500" sequentialRunOrder="false" runMetricsEveryStep="false">
     <setup>setup</setup>
     <go>go</go>
     <timeLimit steps="1826"/>
