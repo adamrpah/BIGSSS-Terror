@@ -9,6 +9,7 @@ Runs the networked hawkes simulation
 from __future__ import division, print_function
 import argparse
 import sys
+import os
 import json
 
 #Non-standard imports
