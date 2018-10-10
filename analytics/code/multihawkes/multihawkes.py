@@ -40,8 +40,10 @@ def tol_checker(ptraces, tol=0.000001):
     return tolpass
 
 def main(args):
+    #Make the savedir given teh threshold limit
+    savedir = args.savedir + str(args.threshold).split('.')[-1] + '/'
     try:
-        os.system('mkdir {0}'.format(args.savedir))
+        os.system('mkdir {0}'.format(savedir))
     except:
         pass
     #Get teh country
@@ -70,7 +72,7 @@ def main(args):
     date_ordinals = date_ordinals.applymap(int)
     #Multiple runs
     for i in range(args.runs):
-        newdir = args.savedir + 'v' + str(i+1)
+        newdir = savedir + 'v' + str(i+1)
         try:
             os.system('mkdir {0}'.format(newdir))
         except:
@@ -100,7 +102,7 @@ def main(args):
             loopcount += 1
             #Start checking
             if loopcount > 1000:
-                tolpass = tol_checker(parameter_trace)
+                tolpass = tol_checker(parameter_trace, tol=args.threshold)
             #break early
             if loopcount>1000 and args.breakearly == True:
                 break
@@ -124,7 +126,7 @@ if __name__ == '__main__':
     parser.add_argument('--breakearly', action='store_true', default=False, help='Break at 1000 runs')
     parser.add_argument('--start_year', default=2001, action='store', type=int)
     parser.add_argument('--end_year', default=2005, action='store', type=int)
-    parser.add_argument('--threshold', default=1, action='store', type=int)
+    parser.add_argument('--threshold', default=0.01, action='store', type=float)
     args = parser.parse_args()
     main(args)
     
