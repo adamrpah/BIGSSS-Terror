@@ -3,8 +3,8 @@ library(glue)
 library(tidyverse)
 
 file <- file.path(
-  path.expand("~/workspace/BIGSSS-Terror/abm/outputs/20180922"),
-  "terror experiment-table.csv"
+  path.expand("~/workspace/BIGSSS-Terror/abm/outputs/20181002"),
+  "results_20181002.csv"
 )
 
 df <- read_csv(file, skip = 6) %>%
