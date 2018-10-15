@@ -1,0 +1,57 @@
+{
+    "People's Revolutionary Army (ERP)": {
+        "B": 5.0, 
+        "W": [
+            0.0, 
+            0.0, 
+            0.9056632262213515, 
+            0.0, 
+            0.0
+        ], 
+        "lambda": 0.002437929620792145
+    }, 
+    "Popular Liberation Army (EPL)": {
+        "B": 5.0, 
+        "W": [
+            0.0, 
+            0.0232186930534478, 
+            0.0, 
+            0.0, 
+            0.0
+        ], 
+        "lambda": 0.001956886093438486
+    }, 
+    "United Self Defense Units of Colombia (AUC)": {
+        "B": 5.0, 
+        "W": [
+            1.3542141160872865, 
+            0.0, 
+            0.0, 
+            2.7226925441594183, 
+            0.7750711500073921
+        ], 
+        "lambda": 0.005939247592269923
+    }, 
+    "National Liberation Army of Colombia (ELN)": {
+        "B": 5.0, 
+        "W": [
+            0.0, 
+            0.0, 
+            0.0, 
+            0.0, 
+            0.0
+        ], 
+        "lambda": 0.011219153602604419
+    }, 
+    "Revolutionary Armed Forces of Colombia (FARC)": {
+        "B": 5.0, 
+        "W": [
+            0.0, 
+            0.0, 
+            0.0, 
+            0.0, 
+            0.0
+        ], 
+        "lambda": 0.07809340215365902
+    }
+}
