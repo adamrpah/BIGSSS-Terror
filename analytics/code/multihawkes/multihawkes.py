@@ -24,12 +24,12 @@ from support import loaders
 
 #Global directories and variables
 
-def tol_checker(ptraces, tol=0.000001):
+def tol_checker(ptraces, tol=0.000001, burn = 500, thin = 5 ):
     tolpass = None
     tolcheck = []
     for trace in ptraces.values():
-        mean_trace = np.mean(trace[-500:])
-        if np.mean([(trace_value-mean_trace)/mean_trace for trace_value in trace[-100:]]) < tol:
+        mean_trace = np.mean(trace[burn::thin])
+        if np.mean([(trace_value-mean_trace)/mean_trace for trace_value in trace[burn::thin]]) < tol:
             tolcheck.append(1)
         else:
             tolcheck.append(0)
@@ -88,23 +88,26 @@ def main(args):
         #Set-up the runs
         tolpass = False
         loopcount = 0
-        lps_runs = list( range(0, 100, 10) )
-        parameter_trace = {g:[] for g in gnames}
+        parameter_trace = {}
+        parameter_trace['lambda'] = {g:[] for g in gnames}
+        parameter_trace['W'] = {g:[] for g in gnames}
         while tolpass == False:
             hawkes_model.resample_model()
-            #record the log probability
-            lps_runs.append(hawkes_model.log_probability())
             #Record the parameters
             for i,group in enumerate(gnames):
-                parameter_trace[group].append(hawkes_model.lambda0[i])
+                parameter_trace['lambda'][group].append(hawkes_model.lambda0[i])
+                parameter_trace['W'][group].append(hawkes_model.W_effective[i])
             #increment
             print(loopcount)
             loopcount += 1
             #Start checking
             if loopcount > 1000:
-                tolpass = tol_checker(parameter_trace, tol=args.threshold)
+                tolpass = tol_checker(parameter_trace['lambda'], tol=args.threshold)
             #break early
             if loopcount>1000 and args.breakearly == True:
+                break
+            #Break for anything because time is finite
+            if loopcount>100000:
                 break
         #Pull the data
         dataset = {}
@@ -112,10 +115,12 @@ def main(args):
         for i, group in enumerate(gnames):
             dataset[group] = {
                 'B': float(hawkes_model.B),
-                'W': hawkes_model.W_effective[i].tolist(),
-                'lambda': float(hawkes_model.lambda0[i])
+                'W': np.mean(np.array(parameter_trace['W'][i][args.burn::args.thin]), axis=0).tolist(),
+                'W_std': np.var(np.array(parameter_trace['W'][i][args.burn::args.thin]), axis=0).tolist(),
+                'lambda': np.mean(parameter_trace['lambda'][i][args.burn::args.thin])
+                'lambda_std': np.std(parameter_trace['lambda'][i][args.burn::args.thin])
             }
-        json.dump(dataset, open('%s/%s_multihawkes.json' % (newdir, country), 'w'), indent=4)
+        json.dump(dataset, open('%s/%s_multihawkes_%dburn_%dthin.json' % (newdir, country, args.burn, args.thin), 'w'), indent=4)
 
 
 if __name__ == '__main__':
@@ -127,6 +132,8 @@ if __name__ == '__main__':
     parser.add_argument('--start_year', default=2001, action='store', type=int)
     parser.add_argument('--end_year', default=2005, action='store', type=int)
     parser.add_argument('--threshold', default=0.01, action='store', type=float)
+    parser.add_argument('--burn', default = 500, action='store', type=int)
+    parser.add_argument('--thin', default = 5, action='store', type=int)
     args = parser.parse_args()
     main(args)
     
