@@ -115,10 +115,10 @@ def main(args):
         for i, group in enumerate(gnames):
             dataset[group] = {
                 'B': float(hawkes_model.B),
-                'W': np.mean(np.array(parameter_trace['W'][i][args.burn::args.thin]), axis=0).tolist(),
-                'W_std': np.var(np.array(parameter_trace['W'][i][args.burn::args.thin]), axis=0).tolist(),
-                'lambda': np.mean(parameter_trace['lambda'][i][args.burn::args.thin]),
-                'lambda_std': np.std(parameter_trace['lambda'][i][args.burn::args.thin])
+                'W': np.mean(np.array(parameter_trace['W'][group][args.burn::args.thin]), axis=0).tolist(),
+                'W_std': np.var(np.array(parameter_trace['W'][group][args.burn::args.thin]), axis=0).tolist(),
+                'lambda': np.mean(parameter_trace['lambda'][group][args.burn::args.thin]),
+                'lambda_std': np.std(parameter_trace['lambda'][group][args.burn::args.thin])
             }
         json.dump(dataset, open('%s/%s_multihawkes_%dburn_%dthin.json' % (newdir, country, args.burn, args.thin), 'w'), indent=4)
 
