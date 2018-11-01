@@ -26,6 +26,7 @@ abm_runs/*
 
 # RStudio files
 .Rproj.user/
+.Rproj
 
 # produced vignettes
 vignettes/*.html
