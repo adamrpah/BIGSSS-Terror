@@ -34,7 +34,7 @@ def main(args):
                 outputs[country][viter] = jload
             except FileNotFoundError:
                 pass
-
+    lambda_set = {}
     matrices = {'Colombia': [], 'Afghanistan': [], 'Iraq': []}
     for country in outputs.keys():
         for vnum in outputs[country]:
@@ -43,6 +43,9 @@ def main(args):
             temp_mat = np.zeros((num_groups, num_groups))
             for gi, gname  in enumerate(group_names):
                 temp_mat[gi] = outputs[country][vnum][gname]['W']
+                if gname not in lambda_set:
+                    lambda_set[gname] = []
+                lambda_set[gname].append(outputs[country][vnum][gname]['lambda'])
             matrices[country].append(temp_mat)
         #Create the averaged matrix and save it
         amat = np.mean(np.array(matrices[country]), axis=0)
@@ -57,7 +60,10 @@ def main(args):
         jstr = json_graph.node_link_data(H)
         with open('../../results/multihawkes/tol_burn_runs001/%s_net.json' % country, 'w') as wfile:
             print(jstr, file=wfile)
-     
+        with open('../../results/multihawkes/tol_burn_runs001/group_lambdas.csv', 'w') as wfile:
+            print('group,lambda', file=wfile)
+            for g, lset in lambda_set.items():
+                print('%s,%f' % (g, np.mean(lset)), file=wfile  )
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="")
