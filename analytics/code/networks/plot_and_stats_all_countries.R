@@ -58,11 +58,11 @@ graph_from_data_frame(links_m, directed = FALSE, vertices = nodes) -> Afghanista
 colors <- c("gray50", "tomato")
 E(Afghanistan_net_m)$color <- colors[E(Afghanistan_net_m)$source]
 
-colors <- c("gray50", "tomato")
+colors2 <- c("gray50", "tomato")
 E(Afghanistan_net)$color <- colors2[E(Afghanistan_net)$source]
 
 # set vertex coordinates
-coords <- layout_in_circle(Afghanistan_net)
+coords_a <- layout_in_circle(Afghanistan_net)
 
 
 ### Colombia
@@ -117,11 +117,11 @@ graph_from_data_frame(links_m, directed = FALSE, vertices = nodes) -> Colombia_n
 colors <- c("gray50", "tomato")
 E(Colombia_net_m)$color <- colors[E(Colombia_net_m)$source]
 
-colors <- c("gray50", "tomato")
+colors2 <- c("gray50", "tomato")
 E(Colombia_net)$color <- colors2[E(Colombia_net)$source]
 
 # set vertex coordinates
-coords <- layout_in_circle(Colombia_net)
+coords_c <- layout_in_circle(Colombia_net)
 
 ### Iraq
 
@@ -175,11 +175,11 @@ graph_from_data_frame(links_m, directed = FALSE, vertices = nodes) -> Iraq_net_m
 colors <- c("gray50", "tomato")
 E(Iraq_net_m)$color <- colors[E(Iraq_net_m)$source]
 
-colors <- c("gray50", "tomato")
+colors2 <- c("gray50", "tomato")
 E(Iraq_net)$color <- colors2[E(Iraq_net)$source]
 
 # set vertex coordinates
-coords <- layout_in_circle(Iraq_net)
+coords_i <- layout_in_circle(Iraq_net)
 
 ### Plot
 
@@ -198,7 +198,7 @@ text(0.5,0.5,"Iraq",cex=1.5,font=2, srt = 90)
 
 #column title 1
 plot.new()
-text(0.5,0.5,"Actual",cex=1.5,font=2)
+text(0.5,0.5,"Alliance",cex=1.5,font=2)
 
 # afghanistan real
 plot(Afghanistan_net, 
