@@ -198,7 +198,7 @@ text(0.5,0.5,"Iraq",cex=1.5,font=2, srt = 90)
 
 #column title 1
 plot.new()
-text(0.5,0.5,"Observed",cex=1.5,font=2)
+text(0.5,0.5,"Actual",cex=1.5,font=2)
 
 # afghanistan real
 plot(Afghanistan_net, 
@@ -226,7 +226,7 @@ plot(Iraq_net,
 
 #column title 2
 plot.new()
-text(0.5,0.5,"Estimated",cex=1.5,font=2)
+text(0.5,0.5,"Inferred",cex=1.5,font=2)
 
 #afghanistan estimated
 plot(Afghanistan_net_m, 
